@@ -1,0 +1,258 @@
+/* aku */
+.login-container {
+  position: relative;
+}
+.login-overlay {
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logo {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.login-overlay h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.login-overlay p {
+  font-size: 14px;
+  text-align: center;
+  max-width: 300px;
+}
+
+/* KANAN */
+.login-right {
+  flex: 1;
+  background: white; /* ✅ ini wajib agar tidak hitam */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h2 {
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: 700;
+  color: #222;
+}
+
+.back-home {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background-color: #22943d;
+  border: none;
+
+  /* Biar animasi halus */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.back-home:hover {
+  color: #ffffff; /* Tetap putih */
+  text-decoration: none; /* Biar popup terlihat rapi */
+  
+  /* Efek popup */
+  transform: scale(1.05); 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  
+  /* Opsional: background sedikit lebih gelap */
+  background-color: #1e8236;
+}
+
+/* FORM */
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+  color: black;
+}
+
+.login-box input::placeholder {
+  color: #999;
+}
+
+.login-box input:focus {
+  border-color: #1e7e34;
+  background-color: #fff;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 20px;
+  color: #444;
+  padding-left: 2px; /* sejajarkan kiri dengan input */
+}
+
+
+.login-options a {
+  color: #1e7e34;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-options a:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00796b;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #005f56;
+}
+
+/* Removed .login-divider and .login-social styles (unused) */
+
+.google {
+  background-color: #dd4b39;
+}
+.facebook {
+  background-color: #3b5998;
+}
+.twitter {
+  background-color: #55acee;
+}
+
+.create-account {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Registration link hover underline */
+.create-account a {
+  text-decoration: none;
+}
+
+.create-account a:hover {
+  text-decoration: underline;
+}
+
+
+
+.checkbox-container input[type="checkbox"] {
+  accent-color: #1e7e34;
+  transform: scale(1.1);
+  cursor: pointer;
+  margin-top: 2px; /* sejajarkan dengan teks */
+}
+
+
+.checkbox-container input[type="checkbox"] {
+  accent-color: #1e7e34;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper input[type="password"],
+.password-input-wrapper input[type="text"] {
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 20px;
+  user-select: none;
+}
+.toggle-password:focus {
+  outline: 2px solid #1e7e34;
+}
+
+/* API Message Styles */
+.api-message {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+}
+
+.api-message.success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.api-message.error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-button:disabled:hover {
+  background-color: #ccc;
+  transform: none;
+  box-shadow: none;
+}
+

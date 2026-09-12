@@ -1,0 +1,491 @@
+/* ===== BEASISWA MANAGER STYLES ===== */
+.beasiswa-manager {
+  padding: 24px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.beasiswa-manager-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.header-left h2 {
+  margin: 0 0 4px 0;
+  color: #0f7536;
+  font-size: 24px;
+}
+
+.header-left p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.btn-add-beasiswa {
+  background: #0f7536;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+  font-size: 14px;
+}
+
+.btn-add-beasiswa:hover:not(:disabled) {
+  background: #0c5c2b;
+  transform: translateY(-1px);
+}
+
+.btn-add-beasiswa:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #f87171;
+}
+
+.close-error {
+  background: none;
+  border: none;
+  color: #dc2626;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+}
+
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-box {
+  flex: 1;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.filter-kategori select {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+/* Form Modal */
+.beasiswa-form-modal {
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.beasiswa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0f7536;
+  box-shadow: 0 0 0 3px rgba(15, 117, 54, 0.1);
+}
+
+/* Persyaratan Section */
+.persyaratan-item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.persyaratan-item input {
+  flex: 1;
+}
+
+.btn-remove-req {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+
+.btn-remove-req:hover {
+  background: #dc2626;
+}
+
+.btn-add-req {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 8px;
+  transition: 0.2s ease;
+}
+
+.btn-add-req:hover {
+  background: #059669;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 12px 20px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: #f3f4f6;
+}
+
+.btn-save {
+  flex: 2;
+  padding: 12px 20px;
+  background: #0f7536;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.btn-save:hover:not(:disabled) {
+  background: #0c5c2b;
+}
+
+.btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Beasiswa List */
+.loading-state,
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 16px;
+  background: white;
+  border-radius: 8px;
+}
+
+.beasiswa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  /* Ensure all grid items in a row have the same height */
+  align-items: stretch;
+}
+
+.beasiswa-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+  border: 1px solid #e5e7eb;
+  
+  /* Flexbox layout to ensure consistent card height and button alignment */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Allow card to stretch to full grid row height */
+}
+
+.beasiswa-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.beasiswa-title {
+  flex: 1;
+}
+
+.beasiswa-title h4 {
+  margin: 0 0 8px 0;
+  color: #0f7536;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.beasiswa-nominal {
+  font-weight: 700;
+  color: #059669;
+  font-size: 14px;
+  background: #d1fae5;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.kategori-badge {
+  background: #ede9fe;
+  color: #6b46c1;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.deadline {
+  color: #666;
+  font-size: 12px;
+}
+
+.status-badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-buka {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-segera {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status-tutup {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.beasiswa-desc {
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  flex-grow: 1; /* Allow description to grow and fill available space */
+}
+
+.persyaratan-preview {
+  margin-bottom: 16px;
+  flex-shrink: 0; /* Prevent requirements from shrinking */
+}
+
+.persyaratan-preview strong {
+  color: #374151;
+  font-size: 13px;
+}
+
+.persyaratan-preview ul {
+  margin: 4px 0 0 0;
+  padding-left: 16px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.persyaratan-preview li {
+  margin-bottom: 2px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto; /* Push buttons to bottom of card */
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  flex-shrink: 0; /* Prevent actions from shrinking */
+}
+
+.btn-edit,
+.btn-delete {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: 0.2s ease;
+  min-height: 36px; /* Ensure consistent button height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-edit {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-edit:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.btn-delete {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-delete:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+.btn-edit:disabled,
+.btn-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .beasiswa-manager {
+    padding: 16px;
+  }
+  
+  .beasiswa-manager-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .filter-controls {
+    flex-direction: column;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .beasiswa-grid {
+    grid-template-columns: 1fr;
+    gap: 16px; /* Smaller gap on mobile */
+  }
+  
+  .card-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .beasiswa-nominal {
+    margin-left: 0;
+  }
+  
+  .beasiswa-card {
+    padding: 16px; /* Less padding on mobile */
+  }
+  
+  .card-actions {
+    gap: 12px; /* Larger gap between buttons on mobile */
+  }
+  
+  .btn-edit,
+  .btn-delete {
+    padding: 12px; /* Larger touch targets on mobile */
+    font-size: 13px;
+  }
+  
+  .card-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

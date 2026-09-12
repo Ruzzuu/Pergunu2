@@ -37,6 +37,6 @@ export default function Turnstile({ onToken }) {
     return () => { cancelled = true; };
   }, [elementId, onToken]);
 
-  if (!siteKey) return <p className="form-note">Turnstile nonaktif di lingkungan lokal.</p>;
+  if (!siteKey) return null;
   return <div id={elementId} className="turnstile" />;
 }

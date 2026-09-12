@@ -1,0 +1,856 @@
+/* Admin NewsManager styles (namespaced to avoid clash with public Berita components) */
+.admin-news-list__header{display:flex;align-items:center;justify-content:space-between;margin:12px 0}
+
+/* Scrollable container for all news items */
+.admin-news-scrollable-container {
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #0f7536 #f1f1f1;
+}
+
+.admin-news-scrollable-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-news-scrollable-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.admin-news-scrollable-container::-webkit-scrollbar-thumb {
+  background: #0f7536;
+  border-radius: 4px;
+}
+
+.admin-news-scrollable-container::-webkit-scrollbar-thumb:hover {
+  background: #0d5e2a;
+}
+
+.admin-news-grid{
+  display:grid;
+  grid-template-columns:repeat(1,minmax(0,1fr));
+  gap:16px;
+  align-items: stretch; /* Ensure all grid items stretch to same height */
+}
+@media (min-width:640px){.admin-news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.admin-news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1280px){.admin-news-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Admin news card styling - Higher specificity to prevent conflicts */
+/* Using Flexbox to ensure equal height cards and aligned action buttons */
+.admin-news-grid .admin-news-card {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 10px !important;
+  padding: 12px !important;
+  background: #fff !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04) !important;
+  transition: all 0.2s ease;
+  font-family: 'Poppins', sans-serif !important;
+  
+  /* Flexbox layout for equal height and aligned buttons */
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important; /* Make card fill grid cell height */
+}
+
+.admin-news-grid .admin-news-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,.08) !important;
+  transform: translateY(-1px);
+}
+
+.admin-news-grid .admin-news-card__header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin-bottom: 6px !important;
+  flex-shrink: 0 !important; /* Prevent header from shrinking */
+}
+
+.admin-news-grid .admin-news-card__title {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  color: #111827 !important;
+  line-height: 1.4 !important;
+  flex: 1 !important; /* Allow title to take available space */
+}
+
+.admin-news-grid .admin-news-card__category {
+  font-size: .75rem !important;
+  background: #0f7536 !important;
+  color: #fff !important;
+  padding: 2px 8px !important;
+  border-radius: 999px !important;
+  font-weight: 500 !important;
+  flex-shrink: 0 !important; /* Prevent category badge from shrinking */
+  white-space: nowrap !important; /* Keep text in one line */
+}
+
+.admin-news-grid .admin-news-card__meta {
+  display: flex !important;
+  gap: 12px !important;
+  color: #555 !important;
+  font-size: .85rem !important;
+  margin-bottom: 6px !important;
+  flex-shrink: 0 !important; /* Prevent meta from shrinking */
+  flex-wrap: wrap !important; /* Allow wrapping on small screens */
+}
+
+.admin-news-grid .admin-news-card__content {
+  color: #333 !important;
+  font-size: .95rem !important;
+  margin-bottom: 8px !important;
+  line-height: 1.5 !important;
+  flex-grow: 1 !important; /* Allow content to grow and fill space */
+}
+
+.admin-news-grid .admin-news-card__actions {
+  display: flex !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  margin-top: auto !important; /* Push actions to the bottom of the card */
+  padding-top: 8px !important; /* Add some spacing from content */
+}
+
+.admin-news-grid .admin-news-card__badge {
+  background: #f59e0b !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  padding: 2px 8px !important;
+  font-size: .75rem !important;
+  align-self: center !important;
+  font-weight: 500 !important;
+}
+
+/* Featured variant for admin news card */
+.admin-news-grid .admin-news-card.admin-news-card--featured {
+  border-color: #f59e0b !important;
+  box-shadow: 0 2px 6px rgba(245,158,11,.2) !important;
+}
+
+.admin-news-grid .admin-news-card.admin-news-card--featured .admin-news-card__badge {
+  background: #d97706 !important;
+}
+
+/* Button feature styling */
+.admin-news-grid .admin-news-card .btn-feature {
+  padding: 6px 10px !important;
+  border: 1px solid #f59e0b !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  color: #b45309 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  font-family: inherit !important;
+}
+
+.admin-news-grid .admin-news-card .btn-feature:hover {
+  background: #fff7ed !important;
+  transform: translateY(-1px);
+}
+
+/* Remove old pagination and grid wrapper styles */
+.admin-news-pagination{display:none}
+.admin-news-grid-wrapper{display:block}
+.admin-news-nav__btn{display:none}
+
+/* Button styles - More specific to override global button styles */
+.admin-news-card .btn-edit, 
+.admin-news-card .btn-delete, 
+.admin-news-card .btn-view {
+  padding: 4px 8px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+  cursor: pointer;
+  font-size: 0.85rem !important;
+  transition: all 0.2s ease;
+  color: #374151 !important;
+  font-weight: 400 !important;
+  font-family: inherit;
+}
+
+.admin-news-card .btn-edit:hover {
+  background: #f0f9ff !important;
+  border-color: #0ea5e9 !important;
+  color: #0ea5e9 !important;
+}
+
+.admin-news-card .btn-delete:hover {
+  background: #fef2f2 !important;
+  border-color: #dc2626 !important;
+  color: #dc2626 !important;
+}
+
+.admin-news-card .btn-view:hover {
+  background: #f7fee7 !important;
+  border-color: #65a30d !important;
+  color: #65a30d !important;
+}
+
+/* Quill Editor Styling - Isolated to editor container only */
+.editor-container .quill-editor {
+  min-height: 300px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.editor-container .quill-editor .ql-toolbar {
+  border-top: 1px solid #e5e7eb;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: #f9fafb;
+  padding: 8px 12px;
+}
+
+.editor-container .quill-editor .ql-container {
+  border-top: none;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 0 0 8px 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 14px;
+  min-height: 250px;
+}
+
+.editor-container .quill-editor .ql-editor {
+  min-height: 250px;
+  padding: 16px;
+  line-height: 1.6;
+}
+
+.editor-container .quill-editor .ql-editor.ql-blank::before {
+  color: #9ca3af;
+  font-style: normal;
+}
+
+/* Toolbar button styling - Only inside editor container */
+.editor-container .quill-editor .ql-toolbar .ql-formats {
+  margin-right: 12px;
+}
+
+.editor-container .quill-editor .ql-toolbar button {
+  border: 1px solid transparent !important;
+  border-radius: 4px !important;
+  padding: 4px !important;
+  margin: 1px !important;
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+  color: #374151 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+.editor-container .quill-editor .ql-toolbar button:hover {
+  background: #e5e7eb !important;
+  border-color: #d1d5db !important;
+}
+
+.editor-container .quill-editor .ql-toolbar button.ql-active {
+  background: #0f7536 !important;
+  color: white !important;
+  border-color: #0d5e2a !important;
+}
+
+/* Custom color picker - Only inside editor */
+.editor-container .quill-editor .ql-toolbar .ql-color .ql-picker-label,
+.editor-container .quill-editor .ql-toolbar .ql-background .ql-picker-label {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+/* Form styling consistency - Enhanced untuk mencegah duplikasi toolbar */
+.editor-container {
+  margin-bottom: 16px;
+}
+
+/* PENTING: CSS untuk mencegah toolbar duplikat Quill */
+.editor-container .write-mode .ql-toolbar:not(:first-child) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Cleanup untuk mencegah toolbar duplikat */
+.editor-container .ql-container + .ql-toolbar {
+  display: none !important;
+}
+
+/* Hanya toolbar pertama yang ditampilkan */
+.editor-container .write-mode > .ql-toolbar:first-child {
+  display: block !important;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafafa;
+  padding: 12px 16px;
+}
+
+/* Force cleanup untuk multiple toolbars yang mungkin terbuat oleh Quill */
+.quill-editor .ql-toolbar ~ .ql-toolbar {
+  display: none !important;
+}
+
+.editor-tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 0;
+}
+
+.editor-tabs .tab {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-bottom: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  margin-right: 2px;
+  border-radius: 8px 8px 0 0;
+}
+
+.editor-tabs .tab:hover {
+  background: #f3f4f6;
+}
+
+.editor-tabs .tab.active {
+  background: #fff;
+  border-bottom: 1px solid #fff;
+  color: #0f7536;
+  font-weight: 600;
+}
+
+.editor-content {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  min-height: 300px;
+}
+
+.write-mode {
+  padding: 0;
+}
+
+.preview-mode {
+  padding: 16px;
+  min-height: 280px;
+  background: #fff;
+}
+
+.preview-header h4 {
+  margin: 0 0 8px 0;
+  color: #111827;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.preview-author {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+}
+
+.preview-content {
+  line-height: 1.6;
+  color: #374151;
+}
+
+.editor-help {
+  padding: 12px 16px;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  border-radius: 0 0 8px 8px;
+}
+
+.editor-help small {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* Empty state and loading styles */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #0f7536;
+  font-weight: 500;
+}
+
+/* News list header */
+.news-list {
+  margin-top: 24px;
+}
+
+.admin-news-list__header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+/* ===== QUILL RICH TEXT EDITOR STYLING ===== */
+
+/* Override Quill toolbar to match admin theme */
+.quill-editor .ql-toolbar {
+  border: 1px solid #e5e7eb;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: #f9fafb;
+  padding: 8px;
+}
+
+.quill-editor .ql-container {
+  border: 1px solid #e5e7eb;
+  border-radius: 0 0 8px 8px;
+  font-family: inherit;
+  font-size: 14px;
+  min-height: 300px;
+}
+
+.quill-editor .ql-editor {
+  min-height: 280px;
+  padding: 12px;
+  line-height: 1.6;
+}
+
+/* Toolbar button styling */
+.quill-editor .ql-toolbar .ql-formats {
+  margin-right: 12px;
+}
+
+.quill-editor .ql-toolbar button {
+  border-radius: 4px;
+  margin: 1px;
+  padding: 4px 6px;
+  transition: all 0.2s ease;
+}
+
+.quill-editor .ql-toolbar button:hover {
+  background: #e5e7eb;
+}
+
+.quill-editor .ql-toolbar button.ql-active {
+  background: #0f7536;
+  color: white;
+}
+
+.quill-editor .ql-toolbar .ql-picker {
+  margin: 1px;
+}
+
+.quill-editor .ql-toolbar .ql-picker-label {
+  border-radius: 4px;
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+}
+
+.quill-editor .ql-toolbar .ql-picker-label:hover {
+  background: #e5e7eb;
+}
+
+.quill-editor .ql-toolbar .ql-picker.ql-expanded .ql-picker-label {
+  background: #e5e7eb;
+  border-radius: 4px 4px 0 0;
+}
+
+.quill-editor .ql-toolbar .ql-picker-options {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 4px 0;
+}
+
+.quill-editor .ql-toolbar .ql-picker-item {
+  padding: 4px 12px;
+  transition: all 0.2s ease;
+}
+
+.quill-editor .ql-toolbar .ql-picker-item:hover {
+  background: #f3f4f6;
+}
+
+/* Editor content styling */
+.quill-editor .ql-editor h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  color: #111827;
+}
+
+.quill-editor .ql-editor h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.875rem 0;
+  color: #111827;
+}
+
+.quill-editor .ql-editor h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.75rem 0;
+  color: #111827;
+}
+
+.quill-editor .ql-editor p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.quill-editor .ql-editor ol,
+.quill-editor .ql-editor ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.quill-editor .ql-editor li {
+  margin: 0.25rem 0;
+}
+
+.quill-editor .ql-editor blockquote {
+  border-left: 4px solid #0f7536;
+  background: #f0fdf4;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  font-style: italic;
+}
+
+.quill-editor .ql-editor a {
+  color: #0f7536;
+  text-decoration: underline;
+}
+
+.quill-editor .ql-editor a:hover {
+  color: #0d5e2a;
+}
+
+/* Preview mode styling */
+.preview-content {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  min-height: 300px;
+  line-height: 1.6;
+}
+
+.preview-content h1,
+.preview-content h2,
+.preview-content h3,
+.preview-content h4,
+.preview-content h5,
+.preview-content h6 {
+  margin: 1rem 0 0.5rem 0;
+  color: #111827;
+}
+
+.preview-content h1 { font-size: 1.875rem; font-weight: 700; }
+.preview-content h2 { font-size: 1.5rem; font-weight: 600; }
+.preview-content h3 { font-size: 1.25rem; font-weight: 600; }
+
+.preview-content p {
+  margin: 0.5rem 0;
+}
+
+.preview-content ul,
+.preview-content ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.preview-content blockquote {
+  border-left: 4px solid #0f7536;
+  background: #f0fdf4;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  font-style: italic;
+}
+
+.preview-content a {
+  color: #0f7536;
+  text-decoration: underline;
+}
+
+.preview-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+/* Editor help text */
+.editor-help {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+}
+
+.editor-help small {
+  color: #065f46;
+  font-size: 0.875rem;
+}
+
+/* ===== IMAGE UPLOAD STYLES ===== */
+.image-upload-container {
+  margin-top: 8px;
+}
+
+.image-upload-area {
+  position: relative;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  padding: 32px 16px;
+  text-align: center;
+  background: #fafafa;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.image-upload-area:hover {
+  border-color: #0f7536;
+  background: #f0fdf4;
+}
+
+.image-upload-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-label {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.image-upload-content {
+  pointer-events: none;
+}
+
+.image-upload-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  color: #6b7280;
+}
+
+.image-upload-text strong {
+  display: block;
+  color: #374151;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.image-upload-text p {
+  color: #6b7280;
+  margin: 4px 0;
+  font-size: 0.9rem;
+}
+
+.image-upload-text small {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+/* Image Preview Styles */
+.image-preview-container {
+  margin-top: 8px;
+}
+
+.image-preview {
+  position: relative;
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 100%;
+}
+
+.preview-image {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-preview:hover .image-overlay {
+  opacity: 1;
+}
+
+.remove-image-btn,
+.change-image-btn {
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: #374151;
+}
+
+.remove-image-btn:hover {
+  background: #fecaca;
+  color: #dc2626;
+  transform: scale(1.1);
+}
+
+.change-image-btn:hover {
+  background: #dbeafe;
+  color: #2563eb;
+  transform: scale(1.1);
+}
+
+.image-info {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+}
+
+.image-info p {
+  margin: 0 0 4px 0;
+  color: #065f46;
+  font-size: 0.9rem;
+}
+
+.image-info small {
+  color: #059669;
+  font-size: 0.8rem;
+}
+
+/* ===== ADMIN CARD IMAGE STYLES ===== */
+.admin-news-card__image {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: #f3f4f6;
+  flex-shrink: 0; /* Prevent image from shrinking in flex layout */
+}
+
+.admin-card-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.admin-news-card:hover .admin-card-cover {
+  transform: scale(1.05);
+}
+
+/* ===== PREVIEW MODE IMAGE STYLES ===== */
+.preview-image-container {
+  margin: 16px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.preview-cover-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Preview header improvements */
+.preview-header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.preview-header h4 {
+  color: #1f2937;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.preview-author {
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .image-upload-area {
+    padding: 24px 12px;
+  }
+  
+  .image-upload-icon {
+    font-size: 2.5rem;
+  }
+  
+  .preview-image {
+    height: 150px;
+  }
+  
+  .remove-image-btn,
+  .change-image-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  
+  .admin-news-card__image {
+    height: 100px;
+  }
+  
+  .preview-cover-image {
+    height: 200px;
+  }
+  
+  .preview-header h4 {
+    font-size: 1.3rem;
+  }
+}

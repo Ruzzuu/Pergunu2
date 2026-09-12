@@ -16,11 +16,16 @@ Gunakan email organisasi, password manager, dan 2FA untuk setiap akun. Catat pem
 
 ## Tugas admin di website
 
-- **Pendaftaran:** buka tab Pendaftaran, pilih jenis, lalu setujui atau tolak. Persetujuan anggota membuat akun dan mengirim tautan password 48 jam. Penolakan harus berisi alasan.
-- **Berita:** buat judul, ringkasan, isi HTML sederhana, kategori, dan gambar maksimal 5 MB. Centang Terbitkan agar publik; hanya satu berita utama yang aktif.
-- **Beasiswa:** gunakan Draf saat menyiapkan, Dibuka untuk menerima form, dan Ditutup setelah deadline. Beasiswa dengan pendaftaran tidak dapat dihapus.
-- **Pengguna:** kirim ulang undangan bila tautan kedaluwarsa, tangguhkan akun untuk mencabut semua sesinya, dan berikan peran admin hanya kepada pengelola resmi.
+- **Login:** buka `/login`; admin masuk ke `/admin`, anggota ke `/user-dashboard`. Menu dan tampilan menggunakan desain proyek asli.
+- **Pendaftaran anggota:** buka tab pendaftaran, lalu setujui atau tolak. Persetujuan membuat akun. Tautan password berlaku 48 jam dan membutuhkan konfigurasi email; pesan hasil menunjukkan jika undangan belum terkirim.
+- **Berita:** isi judul, penulis, kategori, isi melalui editor, dan gambar maksimal 5 MB. Menyimpan berita pada UI asli langsung menerbitkannya. Gunakan tombol berita utama untuk memilih satu berita utama.
+- **Beasiswa:** tambah/edit program, nominal, tenggat, dan persyaratan. Program baru pada UI asli berstatus aktif; server menolak pendaftaran setelah tenggat. Program dengan pendaftaran tidak dapat dihapus.
+- **Pengguna:** tambah akun, kemudian buka Edit pengguna → **Kirim undangan**. Pengguna membuat password sendiri; admin tidak memasukkan atau mengirim password. Akun aktif dapat menggunakan **Forgot Password?** di halaman login.
 - **Sertifikat:** unggah PDF valid maksimal 10 MB. File hanya dapat diunduh oleh pemilik akun.
+
+Preview masih menggunakan database terpisah tanpa impor data pribadi lama. Resend dan Turnstile belum selesai dikonfigurasi. Preview belum siap menerima pendaftaran nyata sampai layanan email dan akses admin organisasi siap.
+
+Simpan nomor referensi setelah mendaftar. Cek status pada halaman utama menggunakan **nomor referensi + email**.
 
 ## Deployment aman
 

@@ -396,9 +396,13 @@ app.patch('/api/admin/applications/:type/:id', async (c) => {
     message += `<p><a href="${escapeHtml(link)}">Buat kata sandi akun</a>. Tautan berlaku 48 jam.</p>`;
   }
   if (rejectionReason) message += `<p>Alasan: ${escapeHtml(rejectionReason)}</p>`;
-  c.executionCtx.waitUntil(sendEmail(c.env, { to: application.email, subject, html: emailLayout(subject, message) }));
+  let emailSent = false;
+  try {
+    const delivery = await sendEmail(c.env, { to: application.email, subject, html: emailLayout(subject, message) });
+    emailSent = !delivery.skipped;
+  } catch { console.error('Application notification could not be delivered'); }
   await audit(c.env, c.get('user').id, `application.${status}`, type, id);
-  return ok(c, { id, status, invitationSent: Boolean(invitationToken) });
+  return ok(c, { id, status, emailSent, invitationSent: Boolean(invitationToken) && emailSent });
 });
 
 app.get('/api/admin/users', async (c) => {
@@ -406,24 +410,68 @@ app.get('/api/admin/users', async (c) => {
   return ok(c, result.results.map(publicUser));
 });
 
+app.post('/api/admin/users', async (c) => {
+  const body = await bodyJson(c);
+  const email = cleanEmail(body?.email);
+  const fullName = cleanText(body?.fullName, 150);
+  const username = cleanText(body?.username, 100) || null;
+  const role = normalizeStatus(body?.role, ['admin', 'user'], null);
+  if (!email || !fullName || !role) return fail(c, 400, 'INVALID_INPUT', 'Nama, email, dan peran yang valid diperlukan.');
+  const duplicate = await c.env.DB.prepare('SELECT id FROM users WHERE email=? OR username=?').bind(email, username).first();
+  if (duplicate) return fail(c, 409, 'DUPLICATE_USER', 'Email atau username sudah digunakan.');
+  const id = crypto.randomUUID();
+  await c.env.DB.prepare(`INSERT INTO users (id,email,username,full_name,role,status,password_setup_required,position,address,phone,created_at,updated_at)
+    VALUES (?,?,?,?,?,'invited',1,?,?,?,?,?)`).bind(id, email, username, fullName, role, cleanText(body.position,120), cleanText(body.address,1000), cleanText(body.phone,30), now(), now()).run();
+  await audit(c.env, c.get('user').id, 'user.created', 'user', id);
+  return ok(c, publicUser(await c.env.DB.prepare('SELECT * FROM users WHERE id=?').bind(id).first()), 201);
+});
+
+app.delete('/api/admin/users/:id', async (c) => {
+  const row = await c.env.DB.prepare('SELECT * FROM users WHERE id=?').bind(c.req.param('id')).first();
+  if (!row) return fail(c, 404, 'NOT_FOUND', 'Pengguna tidak ditemukan.');
+  if (row.role === 'admin' && row.status === 'active') {
+    const count = await c.env.DB.prepare("SELECT COUNT(*) AS count FROM users WHERE role='admin' AND status='active'").first();
+    if (Number(count.count) <= 1) return fail(c, 409, 'LAST_ADMIN', 'Admin aktif terakhir tidak dapat dihapus.');
+  }
+  const certificates = await c.env.DB.prepare('SELECT object_key FROM certificates WHERE user_id=?').bind(row.id).all();
+  for (const certificate of certificates.results) if (certificate.object_key) await c.env.MEDIA.delete(certificate.object_key);
+  await c.env.DB.prepare('DELETE FROM users WHERE id=?').bind(row.id).run();
+  await audit(c.env, c.get('user').id, 'user.deleted', 'user', row.id);
+  return ok(c, { deleted: true });
+});
+
+app.delete('/api/admin/applications/membership/:id', async (c) => {
+  const id = c.req.param('id');
+  await c.env.DB.prepare('DELETE FROM membership_applications WHERE id=?').bind(id).run();
+  await audit(c.env, c.get('user').id, 'application.deleted', 'membership', id);
+  return ok(c, { deleted: true });
+});
+
 app.patch('/api/admin/users/:id', async (c) => {
   const body = await bodyJson(c);
   const status = normalizeStatus(body?.status, ['invited', 'active', 'suspended', 'rejected'], null);
   const role = normalizeStatus(body?.role, ['admin', 'user'], null);
-  if (!status && !role) return fail(c, 400, 'INVALID_INPUT', 'Tidak ada perubahan yang valid.');
+  if (!body || (body.status && !status) || (body.role && !role)) return fail(c, 400, 'INVALID_INPUT', 'Status atau peran tidak valid.');
   const row = await c.env.DB.prepare('SELECT * FROM users WHERE id=?').bind(c.req.param('id')).first();
   if (!row) return fail(c, 404, 'NOT_FOUND', 'Pengguna tidak ditemukan.');
-  if (row.role === 'admin' && row.status === 'active' && (role === 'user' || status === 'suspended' || status === 'rejected')) {
+  if (row.role === 'admin' && row.status === 'active' && (role === 'user' || (status && status !== 'active'))) {
     const count = await c.env.DB.prepare("SELECT COUNT(*) AS count FROM users WHERE role='admin' AND status='active'").first();
     if (Number(count.count) <= 1) return fail(c, 409, 'LAST_ADMIN', 'Admin aktif terakhir tidak dapat dinonaktifkan atau diturunkan perannya.');
   }
-  await c.env.DB.prepare('UPDATE users SET status=?, role=?, updated_at=? WHERE id=?').bind(status || row.status, role || row.role, now(), row.id).run();
+  const email = body.email === undefined ? row.email : cleanEmail(body.email);
+  const fullName = body.fullName === undefined ? row.full_name : cleanText(body.fullName, 150);
+  const username = body.username === undefined ? row.username : cleanText(body.username,100) || null;
+  if (!email || !fullName) return fail(c, 400, 'INVALID_INPUT', 'Nama dan email diperlukan.');
+  if (await c.env.DB.prepare('SELECT id FROM users WHERE (email=? OR username=?) AND id!=?').bind(email, username, row.id).first()) return fail(c, 409, 'DUPLICATE_USER', 'Email atau username sudah digunakan.');
+  await c.env.DB.prepare('UPDATE users SET status=?, role=?, email=?, username=?, full_name=?, position=?, address=?, phone=?, updated_at=? WHERE id=?')
+    .bind(status || row.status, role || row.role, email, username, fullName, body.position === undefined ? row.position : cleanText(body.position,120), body.address === undefined ? row.address : cleanText(body.address,1000), body.phone === undefined ? row.phone : cleanText(body.phone,30), now(), row.id).run();
   if (status === 'suspended') await c.env.DB.prepare('DELETE FROM sessions WHERE user_id=?').bind(row.id).run();
   await audit(c.env, c.get('user').id, 'user.updated', 'user', row.id, { status, role });
   return ok(c, publicUser(await c.env.DB.prepare('SELECT * FROM users WHERE id=?').bind(row.id).first()));
 });
 
 app.post('/api/admin/users/:id/invite', async (c) => {
+  if (!c.env.RESEND_API_KEY || !c.env.RESEND_FROM) return fail(c, 503, 'EMAIL_NOT_CONFIGURED', 'Layanan email belum diatur. Akun tersimpan; undangan belum dikirim.');
   const user = await c.env.DB.prepare('SELECT * FROM users WHERE id=?').bind(c.req.param('id')).first();
   if (!user) return fail(c, 404, 'NOT_FOUND', 'Pengguna tidak ditemukan.');
   await c.env.DB.prepare("UPDATE auth_tokens SET used_at=? WHERE user_id=? AND purpose='invitation' AND used_at IS NULL").bind(now(), user.id).run();

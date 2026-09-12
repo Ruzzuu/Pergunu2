@@ -1,0 +1,691 @@
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #0f7536, #56b269);
+  color: white;
+  padding: 64px 0;
+}
+
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 48px;
+  justify-content: space-between;
+}
+
+.hero-text h1 {
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+  margin-bottom: 24px;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+
+/* Keep buttons together with consistent spacing and center them */
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.hero-buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 220px;           /* match component hero buttons width */
+  height: 48px;           /* ensure equal height */
+  text-align: center;
+  white-space: nowrap;    /* keep phrase on one line */
+  box-sizing: border-box; /* include border for .btn-outline */
+}
+
+.btn-primary,
+.btn-outline {
+  padding: 0 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 8px;
+  transition: 0.2s ease;
+}
+
+.btn-primary {
+  background: white;
+  color: #0f7536;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 10px;
+  margin-right: 12px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #e1e1e1;
+}
+
+.btn-outline {
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: #0f7536;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+}
+
+.hero-image-frame {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 16px;
+  border-radius: 20px;
+}
+
+/* Filter */
+.filter-section {
+  margin: 64px 0;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 32px 0;
+}
+
+.filter-btn {
+  background: #e6e9e7;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: #cce0d9;
+}
+
+.filter-btn.active {
+  background: #0f7536;
+  color: white;
+}
+
+/* Scholarships Grid */
+.scholarships-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  /* Ensure all grid items in a row have the same height */
+  align-items: stretch;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 24px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+  
+  /* Flexbox to ensure consistent card height and button alignment */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Allow card to stretch to grid row height */
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.card-status {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  font-size: 14px;
+  flex-shrink: 0; /* Prevent status from shrinking */
+}
+
+/* Card content area - grows to fill available space */
+.card .desc,
+.card .requirements {
+  flex-grow: 1; /* Allow content to grow and fill available space */
+}
+
+.card .desc {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.card .requirements {
+  margin-bottom: 0;
+}
+
+.card .requirements ul {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+}
+
+.card .requirements li {
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Status Beasiswa - Dynamic berdasarkan kondisi tanggal */
+.status-buka {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.status-segera {
+  background: #fef3c7;
+  color: #d97706;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.status-tutup {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Legacy support untuk status-active */
+.status-active {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* State Handling Styles */
+.loading-container,
+.error-container,
+.empty-container {
+  grid-column: 1 / -1; /* Span across all columns */
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 16px;
+}
+
+.error-container {
+  color: #dc2626;
+}
+
+.btn-retry {
+  background: #0f7536;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: 0.2s ease;
+}
+
+.btn-retry:hover {
+  background: #0c5c2b;
+}
+
+/* Filter buttons - enhance active state */
+.filter-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== MODAL FORM PENDAFTARAN STYLES ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h3 {
+  color: #0f7536;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+  border-radius: 4px;
+  transition: 0.2s ease;
+}
+
+.modal-close:hover {
+  background: #f3f4f6;
+  color: #333;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.beasiswa-info {
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.beasiswa-info h4 {
+  color: #0f7536;
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.beasiswa-info p {
+  margin: 4px 0;
+  color: #333;
+}
+
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0f7536;
+  box-shadow: 0 0 0 3px rgba(15, 117, 54, 0.1);
+}
+
+.form-group small {
+  color: #666;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.submit-message {
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.submit-message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #34d399;
+}
+
+.submit-message.error {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #f87171;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 12px 20px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: #f3f4f6;
+}
+
+.btn-submit {
+  flex: 2;
+  padding: 12px 20px;
+  background: #0f7536;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #0c5c2b;
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    max-height: 95vh;
+  }
+  
+  .modal-header,
+  .modal-body {
+    padding: 16px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+.deadline {
+  color: #888;
+}
+
+.card-actions {
+  margin-top: auto; /* Push buttons to bottom of card */
+  padding-top: 16px; /* Add space between content and buttons */
+  display: flex;
+  gap: 12px;
+}
+
+.btn-apply {
+  flex: 1;
+  background: #0f7536;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 500;
+  font-size: 14px;
+  min-height: 44px; /* Ensure consistent button height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-apply:hover {
+  background: #0c5c2b;
+}
+
+.btn-detail {
+  background: transparent;
+  border: 1px solid #0f7536;
+  color: #0f7536;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 500;
+  font-size: 14px;
+  min-height: 44px; /* Ensure consistent button height */
+  min-width: 80px; /* Minimum width for Detail button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-detail:hover {
+  background: #0f7536;
+  color: white;
+}
+
+/* Proses Pendaftaran */
+.process {
+  background: #f3f4f6;
+  padding: 64px 0;
+  text-align: center;
+}
+
+.process-title {
+  margin-bottom: 8px;
+}
+
+.process-desc {
+  font-size: 16px;
+  color: #444;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.step {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.circle {
+  background: #0f7536;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Kontak */
+.contact-section {
+  background: #0f7536;
+  color: white;
+  padding: 48px 0;
+  text-align: center;
+}
+
+.btn-contact {
+  background: white;
+  color: #0f7536;
+  margin: 8px;
+  padding: 12px 24px;
+  display: inline-block;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.btn-contact:hover {
+  background: #e1e1e1;
+}
+
+/* Global Spacing */
+section {
+  margin-bottom: 0px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 28px;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 16px;
+    margin: 2rem auto;
+  }
+
+  .hero-buttons a {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* Mobile responsive for scholarship grid */
+  .scholarships-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 16px;
+  }
+
+  .card {
+    padding: 20px; /* Slightly less padding on mobile */
+  }
+
+  .filter-buttons {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .filter-btn {
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+    white-space: nowrap;
+  }
+
+  .card-actions {
+    flex-direction: column; /* Stack buttons vertically on very small screens */
+    gap: 8px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .card-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn-apply,
+  .btn-detail {
+    width: 100%;
+    text-align: center;
+  }
+}
+

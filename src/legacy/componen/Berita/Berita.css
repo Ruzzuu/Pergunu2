@@ -1,0 +1,198 @@
+/* aku */
+.berita-section {
+  padding: 80px 20px;
+  background: #f7f7f7;
+  font-family: 'Poppins', sans-serif;
+}
+
+.berita-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.berita-label {
+  color: #1e7e34;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: rgba(30, 126, 52, 0.1);
+  padding: 4px 12px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-left: 0;
+}
+
+.berita-utama-card {
+  display: flex;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  justify-content: space-between;
+  gap: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.berita-utama-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+}
+
+.berita-utama-card img {
+  max-width: 300px;
+  border-radius: 12px;
+}
+
+.berita-utama-content {
+  flex: 1;
+}
+
+.berita-utama-content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+}
+
+.berita-utama-content p {
+  margin-top: 10px;
+  color: #444;
+}
+
+.berita-utama-content button {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: #1e7e34;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.berita-utama-content button:hover {
+  background: #16682b;
+  transform: scale(1.08);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.berita-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(0);
+}
+
+.berita-grid.sliding {
+  transition: all 0.5s ease-in-out;
+}
+
+.berita-card {
+  flex: 1;
+  min-width: 250px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  cursor: pointer;
+  padding: 3px;
+  position: relative;
+  z-index: 1;
+  transform: scale(1);
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+  will-change: transform, box-shadow;
+}
+
+.berita-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(30, 126, 52, 0.25);
+  z-index: 10;
+}
+
+.berita-card img {
+  width: calc(100% - 6px);
+  height: 160px;
+  object-fit: cover;
+  margin: 3px 3px 0 3px;
+  border-radius: 8px;
+}
+
+.berita-card p {
+  padding: 10px 6px;
+  font-weight: 500;
+  color: #111;
+  margin: 0;
+}
+
+/* === ANIMASI SCROLL MASUK === */
+.berita-label,
+.berita-utama-card,
+.berita-card {
+  opacity: 0;
+  transform: translateY(50px) scale(1);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.berita-section.animate .berita-label {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+}
+
+.berita-section.animate .berita-utama-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.2s;
+}
+
+.berita-section.animate .berita-card:nth-child(1),
+.berita-section.animate .berita-card:nth-child(2),
+.berita-section.animate .berita-card:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.4s;
+}
+
+/* Berita grid navigation buttons */
+.berita-nav-btn {
+  transition: all 0.3s ease;
+}
+
+.berita-nav-btn:hover {
+  background: #1e7e34 !important;
+  color: white !important;
+  transform: translateY(-50%) scale(1.1) !important;
+  box-shadow: 0 4px 12px rgba(30, 126, 52, 0.3) !important;
+}
+
+.berita-nav-btn:active {
+  transform: translateY(-50%) scale(0.95) !important;
+}
+
+.berita-grid-container {
+  position: relative;
+  padding: 0 60px; /* Add space for navigation arrows */
+}
+
+@media (max-width: 768px) {
+  .berita-grid-container {
+    padding: 0 30px; /* Smaller padding on mobile */
+  }
+  
+  .berita-nav-left {
+    left: -25px !important;
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 14px !important;
+  }
+  
+  .berita-nav-right {
+    right: -25px !important;
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 14px !important;
+  }
+}

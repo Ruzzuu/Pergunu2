@@ -1,6 +1,6 @@
 # PERGUNU Situbondo — Cloudflare
 
-Pengganti bersih untuk aplikasi PERGUNU lama. Satu Cloudflare Worker menjalankan API dan aset React, D1 menyimpan data, R2 menyimpan gambar/PDF, dan Resend mengirim email transaksional.
+Migrasi backend PERGUNU dengan tampilan asli dipulihkan. Satu Cloudflare Worker menjalankan API dan aset React, D1 menyimpan data, R2 menyimpan gambar/PDF, dan Resend mengirim email transaksional setelah dikonfigurasi.
 
 Preview aktif: [pergunu-situbondo-preview.fairuz-fuadi04.workers.dev](https://pergunu-situbondo-preview.fairuz-fuadi04.workers.dev). Preview menggunakan `pergunu-db-preview` dan `pergunu-media-preview`; keduanya terpisah dari resource produksi.
 
@@ -35,3 +35,9 @@ npm run check
 Data pribadi tidak pernah boleh dimasukkan ke repository ini. SQL hasil impor dibuat di `.generated/`, memiliki permission lokal terbatas, dan diabaikan oleh Git.
 
 Lanjutkan dengan [panduan migrasi](docs/MIGRATION-ID.md), [panduan operasional](docs/OPERATIONS-ID.md), dan [arsitektur](docs/ARCHITECTURE.md).
+
+## Mengubah tampilan
+
+Entry point `src/main.jsx` memakai `src/legacy/App.jsx`. Komponen, halaman, CSS, gambar, dan dokumen publik berasal dari `../frontend`. Edit halaman di `src/legacy/pages/` dan komponen di `src/legacy/componen/`. Seluruh CSS asli dipertahankan.
+
+`src/legacy/services/cloudflare.js` memetakan permintaan komponen asli ke API Cloudflare. Autentikasi menggunakan cookie server; data tampilan di localStorage bukan sumber otorisasi. Password setup/reset, nomor referensi untuk cek status, dan akses sertifikat privat adalah penyesuaian alur yang diperlukan untuk backend baru.

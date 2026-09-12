@@ -1,0 +1,218 @@
+/* aku */
+.layanan-sub {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.layanan-sub::before {
+  content: "LAYANAN";
+  background-color: rgba(30, 126, 52, 0.1);
+  padding: 4px 12px;
+  border-radius: 10px;
+  color: #1e7e34;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+
+.layanan-section {
+  background-color: #fefefe;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  /* tidak ada text-align di sini! */
+}
+
+.layanan-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 10px 0 40px;
+  color: #111;
+}
+/* .layanan-section {
+  background-color: #fefefe;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.layanan-title {
+  text-align: center;
+} */
+
+
+.layanan-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.layanan-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 220px;
+}
+
+.layanan-button {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.layanan-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.layanan-button .radio-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layanan-button .radio-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #28a745;
+  border-radius: 50%;
+}
+
+.layanan-button.active {
+  background-color: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+
+.layanan-button.active:hover {
+  transform: scale(1.05);
+  background-color: #218838;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.layanan-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.layanan-image {
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+.layanan-detail {
+  flex: 1;
+}
+
+.detail-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111;
+}
+.detail-content p,
+.detail-content li {
+  text-align: left;
+}
+
+.detail-content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.detail-content ul {
+  margin: 10px 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.detail-content li {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #444;
+}
+
+.detail-content p {
+  margin: 10px 0;
+  color: #444;
+}
+
+.layanan-actions {
+  margin-top: 16px;
+}
+
+.layanan-actions .tentang-button {
+  background-color: #1e7e34;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.layanan-actions .tentang-button:hover {
+  transform: scale(1.03);
+  background-color: #155724;
+}
+
+/* Default state - hidden */
+.layanan-sub,
+.layanan-title,
+.layanan-wrapper {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+/* Animated state - visible */
+.layanan-section.animate .layanan-sub {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.layanan-section.animate .layanan-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.layanan-section.animate .layanan-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+/* Efek hover scale untuk button.layanan-button */
+.layanan-button:hover {
+  transform: scale(1.05);
+  background-color:white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

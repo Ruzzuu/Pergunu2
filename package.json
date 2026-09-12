@@ -17,19 +17,28 @@
     "data:import:remote": "wrangler d1 execute pergunu-db --remote --env=\"\" --file=.generated/legacy-import.sql",
     "admin:create": "node scripts/create-admin.mjs",
     "test": "vitest run",
+    "test:ui": "node scripts/check-restored-ui.mjs",
+    "test:flows": "node scripts/check-restored-flows.mjs",
+    "test:preview": "node scripts/check-preview.mjs",
     "check": "npm run test && npm run build",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.5.6",
     "hono": "^4.9.0",
+    "quill": "^2.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-icons": "^5.7.0",
     "react-router-dom": "^7.8.0",
     "sanitize-html": "^2.17.0",
+    "tailwindcss": "^4.3.3",
     "vite": "^7.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@types/sanitize-html": "^2.16.0",
