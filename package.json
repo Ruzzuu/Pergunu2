@@ -16,6 +16,7 @@
     "data:import:local": "wrangler d1 execute pergunu-db --local --file=.generated/legacy-import.sql",
     "data:import:remote": "wrangler d1 execute pergunu-db --remote --env=\"\" --file=.generated/legacy-import.sql",
     "admin:create": "node scripts/create-admin.mjs",
+    "admin:create:preview": "node scripts/create-admin.mjs --preview",
     "test": "vitest run",
     "test:ui": "node scripts/check-restored-ui.mjs",
     "test:flows": "node scripts/check-restored-flows.mjs",

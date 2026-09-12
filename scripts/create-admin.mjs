@@ -10,10 +10,14 @@ const valueAfter = (flag) => {
 };
 const email = valueAfter('--email')?.trim().toLowerCase();
 const name = valueAfter('--name')?.trim() || 'Administrator PERGUNU';
-const appUrl = valueAfter('--app-url') || 'https://pergunu.fairuzfd.dev';
+const preview = process.argv.includes('--preview');
+const appUrl = valueAfter('--app-url') || (preview
+  ? 'https://pergunu-situbondo-preview.fairuz-fuadi04.workers.dev'
+  : 'https://pergunu.fairuzfd.dev');
 const remote = process.argv.includes('--remote');
 if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-  console.error('Gunakan: npm run admin:create -- --email admin@example.com [--name "Nama"] [--remote]');
+  console.error('Gunakan lokal: npm run admin:create -- --email admin@example.com [--name "Nama"]');
+  console.error('Gunakan preview: npm run admin:create:preview -- --email admin@example.com [--name "Nama"]');
   process.exit(1);
 }
 
@@ -37,7 +41,10 @@ COMMIT;\n`;
 const tempPath = path.join(os.tmpdir(), `pergunu-admin-${crypto.randomUUID()}.sql`);
 fs.writeFileSync(tempPath, sql, { mode: 0o600 });
 try {
-  const args = ['wrangler', 'd1', 'execute', 'pergunu-db', remote ? '--remote' : '--local', `--file=${tempPath}`];
+  const database = preview ? 'pergunu-db-preview' : 'pergunu-db';
+  const args = ['wrangler', 'd1', 'execute', database, preview || remote ? '--remote' : '--local'];
+  if (preview) args.push('--env', 'preview');
+  args.push(`--file=${tempPath}`);
   const result = spawnSync(process.platform === 'win32' ? 'npx.cmd' : 'npx', args, { stdio: 'inherit' });
   if (result.status !== 0) process.exit(result.status || 1);
   console.log('\nAdmin siap diaktifkan. Buka tautan satu kali ini dalam 48 jam:');

@@ -25,6 +25,14 @@ Gunakan email organisasi, password manager, dan 2FA untuk setiap akun. Catat pem
 
 Preview masih menggunakan database terpisah tanpa impor data pribadi lama. Resend dan Turnstile belum selesai dikonfigurasi. Preview belum siap menerima pendaftaran nyata sampai layanan email dan akses admin organisasi siap.
 
+Buat admin preview pertama setelah email pengelola dipilih:
+
+```bash
+npm run admin:create:preview -- --email admin@domain-anda --name "Nama Admin"
+```
+
+Perintah mencetak tautan sekali pakai yang berlaku 48 jam. Buka tautan itu untuk membuat password minimal 12 karakter.
+
 Simpan nomor referensi setelah mendaftar. Cek status pada halaman utama menggunakan **nomor referensi + email**.
 
 ## Deployment aman

@@ -52,8 +52,10 @@ Untuk deployment otomatis, tambahkan GitHub Environments bernama `preview` dan `
 Periksa `.generated/legacy-import-report.json`, kemudian buat admin baru:
 
 ```bash
-npm run admin:create -- --email admin@domain-anda --name "Nama Admin" --remote --app-url https://URL-PREVIEW
+npm run admin:create:preview -- --email admin@domain-anda --name "Nama Admin"
 ```
+
+Perintah tersebut hanya menulis akun admin ke `pergunu-db-preview` dan mencetak tautan aktivasi sekali pakai untuk URL preview. Jalankan hanya untuk email admin yang sudah dipilih organisasi.
 
 ## 4. Preview dan produksi
 
