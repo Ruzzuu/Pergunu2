@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.wrangler/
+.dev.vars
+.env*
+.generated/
+coverage/
+*.log
+.DS_Store
+
+# Never commit legacy exports or uploaded personal files.
+db.json
+mongodb-import/
+uploads/
+*.bak
+*.backup

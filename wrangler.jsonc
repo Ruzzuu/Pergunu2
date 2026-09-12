@@ -1,0 +1,36 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pergunu-situbondo",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/media/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "pergunu-db",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "preview_database_id": "11111111-1111-1111-1111-111111111111",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "pergunu-media",
+      "preview_bucket_name": "pergunu-media-preview"
+    }
+  ],
+  "vars": {
+    "APP_URL": "https://pergunu.fairuzfd.dev",
+    "RESEND_FROM": "PERGUNU Situbondo <noreply@fairuzfd.dev>"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

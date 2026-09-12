@@ -1,0 +1,5 @@
+APP_URL=http://localhost:5173
+RESEND_API_KEY=
+RESEND_FROM=PERGUNU Situbondo <noreply@example.com>
+TURNSTILE_SECRET=
+VITE_TURNSTILE_SITE_KEY=
