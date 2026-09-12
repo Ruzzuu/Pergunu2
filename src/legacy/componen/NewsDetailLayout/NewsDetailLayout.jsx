@@ -52,7 +52,7 @@ const NewsDetailLayout = () => {
     if (imageUrl.startsWith('http')) return imageUrl;
     
     // Handle asset paths
-    if (imageUrl.startsWith('/src/assets/')) return imageUrl;
+    if (imageUrl.startsWith('/src/assets/')) return NoImageImg;
     
     // Fallback to default
     return NoImageImg;

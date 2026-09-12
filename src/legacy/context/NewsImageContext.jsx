@@ -1,6 +1,7 @@
 import { legacyFetch as fetch } from '../services/cloudflare.js';
 // src/context/NewsImageContext.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import noImageImg from '../assets/noimage.png';
 
 const NewsImageContext = createContext();
 
@@ -14,7 +15,7 @@ export const useNewsImage = () => {
 
 export const NewsImageProvider = ({ children }) => {
   const [newsImages, setNewsImages] = useState({});
-  const [featuredNewsImage, setFeaturedNewsImage] = useState('/src/assets/noimage.png');
+  const [featuredNewsImage, setFeaturedNewsImage] = useState(noImageImg);
   
   // Fungsi untuk update gambar news berdasarkan ID
   const updateNewsImage = (newsId, imageUrl) => {
@@ -25,7 +26,7 @@ export const NewsImageProvider = ({ children }) => {
   };
 
   // Fungsi untuk mendapatkan gambar berdasarkan news ID
-  const getNewsImage = (newsId, fallbackImage = '/src/assets/noimage.png') => {
+  const getNewsImage = (newsId, fallbackImage = noImageImg) => {
     return newsImages[newsId] || fallbackImage;
   };
 

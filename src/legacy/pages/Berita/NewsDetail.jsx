@@ -9,6 +9,7 @@ import Berita1Img from "../../assets/Berita1.png";
 import Berita2Img from "../../assets/Berita2.png";
 import Berita3Img from "../../assets/Berita3.png";
 import Berita4Img from "../../assets/Berita4.png";
+import NoImageImg from "../../assets/noimage.png";
 
 const API_BASE = '/api';
 const FILE_SERVER = '';
@@ -79,17 +80,17 @@ const NewsDetail = () => {
   const getImageSrc = () => {
     if (!newsData) {
       // Jika tidak ada data, gunakan featured image dari context
-      return featuredNewsImage !== '/src/assets/noimage.png' ? featuredNewsImage : Berita1Img;
+      return featuredNewsImage !== NoImageImg ? featuredNewsImage : Berita1Img;
     }
     
     // Jika ini featured news, prioritaskan context
-    if (newsData.featured && featuredNewsImage && featuredNewsImage !== '/src/assets/noimage.png') {
+    if (newsData.featured && featuredNewsImage && featuredNewsImage !== NoImageImg) {
       return featuredNewsImage;
     }
     
     // Coba ambil dari context berdasarkan ID
     const contextImage = getNewsImage(newsData.id);
-    if (contextImage !== '/src/assets/noimage.png') {
+    if (contextImage !== NoImageImg) {
       return contextImage;
     }
     
@@ -112,9 +113,7 @@ const NewsDetail = () => {
     }
     
     // Handle asset paths
-    if (imageUrl && imageUrl.startsWith('/src/assets/')) {
-      return imageUrl;
-    }
+    if (imageUrl && imageUrl.startsWith('/src/assets/')) return NoImageImg;
     
     // Handle file server uploads
     if (imageUrl && !imageUrl.includes('/') && !imageUrl.startsWith('http') && !imageUrl.startsWith('/src/')) {

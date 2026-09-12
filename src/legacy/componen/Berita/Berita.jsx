@@ -40,14 +40,14 @@ const Berita = () => {
   // Helper function untuk mendapatkan gambar dengan fallback + context sync
   const getImageWithFallback = React.useCallback((imageUrl, newsId = null, isFeatured = false) => {
     // Jika ini featured news, prioritaskan gambar dari context, tapi jika tidak ada, lanjut ke imageUrl
-    if (isFeatured && featuredNewsImage && featuredNewsImage !== '/src/assets/noimage.png') {
+    if (isFeatured && featuredNewsImage && featuredNewsImage !== noImageImg) {
       return featuredNewsImage;
     }
     
     // Jika ada newsId, coba ambil dari context
     if (newsId) {
       const contextImage = getNewsImage(newsId);
-      if (contextImage !== '/src/assets/noimage.png') {
+      if (contextImage !== noImageImg) {
         return contextImage;
       }
     }
@@ -68,9 +68,7 @@ const Berita = () => {
     }
     
     // Handle asset paths
-    if (imageUrl.startsWith('/src/assets/')) {
-      return imageUrl;
-    }
+    if (imageUrl.startsWith('/src/assets/')) return noImageImg;
     
     // Handle uploaded image files (filename only) - point to file-server
     if (imageUrl && !imageUrl.includes('/') && !imageUrl.startsWith('http') && !imageUrl.startsWith('/src/')) {

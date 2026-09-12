@@ -12,9 +12,6 @@ import Tentang from "./componen/Tentang/Tentang";        // Section tentang PERG
 import StrukturOrganisasi from "./componen/StrukturOrganisasi/StrukturOrganisasi"; // Section struktur organisasi departemen
 import Berita from "./componen/Berita/Berita";           // Grid berita terbaru
 import Anggota from "./componen/Anggota/Anggota";        // Tim dan anggota
-import Layanan from "./componen/Layanan/Layanan";        // Layanan yang ditawarkan
-import Sponsor from "./componen/Sponsor/Sponsor";        // Partner dan sponsor
-import BeasiswaCard from "./componen/Beasiswa/Beasiswa"; // Card info beasiswa
 import Footer from "./componen/Footer/Footer";           // Footer website
 import StatusTracker from "./componen/StatusTracker/StatusTracker"; // Cek status pendaftaran
 
@@ -93,16 +90,9 @@ const App = () => {
               <StrukturOrganisasi />  {/* Section struktur organisasi dan departemen-departemen */}
               <Anggota />       {/* Section tim inti dan keanggotaan */}
               <Berita />        {/* Section berita terbaru (3 artikel) */}
-              {/* COMMENTED OUT - DAPAT DIKEMBALIKAN NANTI */}
-              {/* <BeasiswaCard />  Section program beasiswa dan bantuan */}
-              {/* <Layanan />       Section layanan yang ditawarkan PERGUNU */}
-              {/* END COMMENTED SECTION */}
               <div id="status-tracker">
                 <StatusTracker />  {/* Section cek status pendaftaran dengan form */}
               </div>
-              {/* COMMENTED OUT - DAPAT DIKEMBALIKAN NANTI */}
-              {/* <Sponsor />  Section sponsor, partner, dan mitra kerjasama */}
-              {/* END COMMENTED SECTION */}
               <Footer />   {/* Footer dengan informasi kontak dan copyright */}
             </>
           }

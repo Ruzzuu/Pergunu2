@@ -46,7 +46,7 @@ scripts/                        Admin creation, checks, and legacy import prepar
 docs/                           Operating, migration, architecture, and this guide
 ```
 
-`src/legacy/` is active despite its name. It contains the recovered original design. `src/App.jsx`, `src/AuthContext.jsx`, `src/styles.css`, and `src/assets/` are a previous redesigned frontend and are not mounted by `src/main.jsx`; treat them as duplicate/inactive code until they are deliberately removed.
+`src/legacy/` is active despite its name. It contains the recovered original design and is the only frontend source mounted by `src/main.jsx`.
 
 ## 3. Frontend, API, and authentication
 
@@ -196,7 +196,7 @@ Do not run the production command until the production D1 ID is configured and t
 - **Preview is the only configured environment.** Production database configuration is intentionally incomplete.
 - **No legacy personal data has been imported.** `scripts/prepare-legacy-import.mjs` creates a sanitized local SQL file in `.generated/`; do not run a remote import without an approved backup and explicit data-handling decision.
 - **Resend and Turnstile are not yet configured for preview.** Do not treat the preview as ready for real public registrations until they are configured.
-- **Duplicate inactive frontend files remain in `src/`.** The app uses `src/legacy/`; avoid editing `src/App.jsx` unless you are deliberately replacing the original UI.
+- **The compatibility bridge is intentionally separate from the page code.** The app uses `src/legacy/`; make visual changes there rather than adding a second frontend entry point.
 - **The compatibility bridge is intentional but fragile.** `src/legacy/services/cloudflare.js` translates old frontend request shapes. Test admin/news/scholarship flows after changing it.
 - **The preview admin bootstrap resets that email's password and invitations.** Use `admin:create:preview` only when you intend to issue a fresh activation link.
 

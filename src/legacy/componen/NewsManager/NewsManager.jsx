@@ -5,6 +5,11 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import './NewsManager.css';
 import { stripHtmlTags, getExcerpt } from '../../utils/htmlUtils';
+import Berita1Img from '../../assets/Berita1.png';
+import Berita2Img from '../../assets/Berita2.png';
+import Berita3Img from '../../assets/Berita3.png';
+import Berita4Img from '../../assets/Berita4.png';
+import NoImageImg from '../../assets/noimage.png';
 
 const API_BASE = '/api';
 const FILE_SERVER = '';
@@ -54,10 +59,20 @@ export default function NewsManager() {
     // Jika sudah URL lengkap, gunakan langsung
     if (imagePath.startsWith('http')) return imagePath;
     
-    // Jika path dimulai dengan /src/assets, gunakan langsung (gambar existing)
-    if (imagePath.startsWith('/src/assets/') || imagePath.startsWith('src/assets/')) {
-      return imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
-    }
+    const legacyImages = {
+      '/src/assets/Berita1.png': Berita1Img,
+      '/src/assets/Berita2.png': Berita2Img,
+      '/src/assets/Berita3.png': Berita3Img,
+      '/src/assets/Berita4.png': Berita4Img,
+      '/src/assets/noimage.png': NoImageImg,
+      'src/assets/Berita1.png': Berita1Img,
+      'src/assets/Berita2.png': Berita2Img,
+      'src/assets/Berita3.png': Berita3Img,
+      'src/assets/Berita4.png': Berita4Img,
+      'src/assets/noimage.png': NoImageImg
+    };
+    if (legacyImages[imagePath]) return legacyImages[imagePath];
+    if (imagePath.startsWith('/src/assets/') || imagePath.startsWith('src/assets/')) return NoImageImg;
     
     // Jika path dimulai dengan /, gunakan langsung
     if (imagePath.startsWith('/')) return imagePath;

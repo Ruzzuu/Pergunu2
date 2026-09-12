@@ -81,14 +81,14 @@ const SidebarWidget = ({
   // Mendapatkan URL gambar yang benar
   const getImageSrc = (imageUrl, newsId = null, isFeatured = false) => {
     // Prioritas 1: Jika ini featured news, gunakan featured image dari context
-    if (isFeatured && featuredNewsImage && featuredNewsImage !== '/src/assets/noimage.png') {
+    if (isFeatured && featuredNewsImage && featuredNewsImage !== noImageImg) {
       return featuredNewsImage;
     }
     
     // Prioritas 2: Jika ada newsId, coba ambil dari context
     if (newsId) {
       const contextImage = getNewsImage(newsId);
-      if (contextImage !== '/src/assets/noimage.png') {
+      if (contextImage !== noImageImg) {
         return contextImage;
       }
     }
@@ -128,7 +128,7 @@ const SidebarWidget = ({
     if (imageUrl.startsWith('http')) return imageUrl;
     
     // Handle asset paths
-    if (imageUrl.startsWith('/src/assets/')) return imageUrl;
+    if (imageUrl.startsWith('/src/assets/')) return noImageImg;
     
     // Fallback ke gambar default
     return noImageImg;
