@@ -2,6 +2,8 @@
 
 Pengganti bersih untuk aplikasi PERGUNU lama. Satu Cloudflare Worker menjalankan API dan aset React, D1 menyimpan data, R2 menyimpan gambar/PDF, dan Resend mengirim email transaksional.
 
+Preview aktif: [pergunu-situbondo-preview.fairuz-fuadi04.workers.dev](https://pergunu-situbondo-preview.fairuz-fuadi04.workers.dev). Preview menggunakan `pergunu-db-preview` dan `pergunu-media-preview`; keduanya terpisah dari resource produksi.
+
 ## Menjalankan secara lokal
 
 Persyaratan: Node.js 20 atau lebih baru dan npm.

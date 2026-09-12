@@ -18,7 +18,7 @@ npx wrangler r2 bucket create pergunu-media
 npx wrangler r2 bucket create pergunu-media-preview
 ```
 
-Ganti UUID nol/placeholder untuk produksi dan preview di `wrangler.jsonc` dengan ID yang dicetak oleh Wrangler. Ganti pula `REPLACE_WITH_PREVIEW_HOSTNAME` setelah hostname preview diketahui. Simpan rahasia pada kedua environment:
+Ganti UUID nol/placeholder produksi di `wrangler.jsonc` setelah database produksi dibuat. Preview telah dikonfigurasi pada `https://pergunu-situbondo-preview.fairuz-fuadi04.workers.dev`. Simpan rahasia pada kedua environment:
 
 ```bash
 npx wrangler secret put RESEND_API_KEY

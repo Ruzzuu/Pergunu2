@@ -51,7 +51,7 @@
         }
       ],
       "vars": {
-        "APP_URL": "https://REPLACE_WITH_PREVIEW_HOSTNAME",
+        "APP_URL": "https://pergunu-situbondo-preview.fairuz-fuadi04.workers.dev",
         "RESEND_FROM": "PERGUNU Situbondo <noreply@fairuzfd.dev>"
       },
       "observability": {
