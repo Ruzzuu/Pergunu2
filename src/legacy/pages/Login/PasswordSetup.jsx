@@ -34,7 +34,7 @@ export default function PasswordSetup({ request = false }) {
     <div className="login-left"><div className="login-overlay"><img src={logo} alt="Logo PERGUNU" className="login-logo" /><h2>Hey! Welcome</h2><p>Join us and give information to people</p></div></div>
     <div className="login-right"><div className="login-box"><h2>{request ? 'Lupa Password' : 'Atur Password'}</h2>
       <form onSubmit={submit}>
-        {request ? <><input aria-label="Email" type="email" placeholder="Email" required value={email} onChange={e => setEmail(e.target.value)} /><Turnstile onToken={setToken} /></> : <input aria-label="Password baru" type="password" autoComplete="new-password" minLength={12} required placeholder="Password baru (minimal 12 karakter)" value={password} onChange={e => setPassword(e.target.value)} />}
+        {request ? <><input aria-label="Email" type="email" placeholder="Email" required value={email} onChange={e => setEmail(e.target.value)} /><Turnstile onToken={setToken} /></> : <input aria-label="Password baru" type="password" autoComplete="new-password" minLength={8} required placeholder="Password baru (minimal 8 karakter)" value={password} onChange={e => setPassword(e.target.value)} />}
         <button className="login-button" disabled={busy}>{busy ? 'Memproses...' : request ? 'Kirim tautan' : 'Simpan password'}</button>
         {message && <p role="status" className="api-message">{message}</p>}
       </form><p className="create-account"><Link to="/login">Kembali ke login</Link></p>

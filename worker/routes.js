@@ -132,7 +132,7 @@ app.get('/api/auth/me', async (c) => {
 app.post('/api/auth/accept-invitation', async (c) => {
   if (!await limited(c, 'accept-invitation', 8, 30)) return fail(c, 429, 'RATE_LIMITED', 'Terlalu banyak percobaan.');
   const body = await bodyJson(c);
-  if (!body?.token || !validPassword(body.password)) return fail(c, 400, 'INVALID_INPUT', 'Token dan kata sandi minimal 12 karakter diperlukan.');
+  if (!body?.token || !validPassword(body.password)) return fail(c, 400, 'INVALID_INPUT', 'Token dan kata sandi minimal 8 karakter diperlukan.');
   const tokenRow = await consumeAuthToken(c.env, body.token, 'invitation');
   if (!tokenRow) return fail(c, 400, 'INVALID_TOKEN', 'Tautan undangan tidak valid atau kedaluwarsa.');
   const passwordHash = await hashPassword(body.password);
@@ -167,7 +167,7 @@ app.post('/api/auth/request-reset', async (c) => {
 
 app.post('/api/auth/reset-password', async (c) => {
   const body = await bodyJson(c);
-  if (!body?.token || !validPassword(body.password)) return fail(c, 400, 'INVALID_INPUT', 'Token dan kata sandi minimal 12 karakter diperlukan.');
+  if (!body?.token || !validPassword(body.password)) return fail(c, 400, 'INVALID_INPUT', 'Token dan kata sandi minimal 8 karakter diperlukan.');
   const tokenRow = await consumeAuthToken(c.env, body.token, 'password_reset');
   if (!tokenRow) return fail(c, 400, 'INVALID_TOKEN', 'Tautan tidak valid atau kedaluwarsa.');
   await c.env.DB.batch([

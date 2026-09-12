@@ -31,7 +31,7 @@ Buat admin preview pertama setelah email pengelola dipilih:
 npm run admin:create:preview -- --email admin@domain-anda --name "Nama Admin"
 ```
 
-Perintah mencetak tautan sekali pakai yang berlaku 48 jam. Buka tautan itu untuk membuat password minimal 12 karakter.
+Perintah mencetak tautan sekali pakai yang berlaku 48 jam. Buka tautan itu untuk membuat password minimal 8 karakter.
 
 Simpan nomor referensi setelah mendaftar. Cek status pada halaman utama menggunakan **nomor referensi + email**.
 

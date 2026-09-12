@@ -31,7 +31,8 @@ describe('input normalization', () => {
   });
 
   it('validates password length, arrays, and integer values', () => {
-    expect(validPassword('123456789012')).toBe(true);
+    expect(validPassword('12345678')).toBe(true);
+    expect(validPassword('1234567')).toBe(false);
     expect(validPassword('terlalu')).toBe(false);
     expect(parseJsonArray('["a","b"]')).toEqual(['a', 'b']);
     expect(parseJsonArray('{}')).toEqual([]);

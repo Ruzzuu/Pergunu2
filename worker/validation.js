@@ -8,7 +8,7 @@ export function cleanEmail(value) {
 }
 
 export function validPassword(value) {
-  return typeof value === 'string' && value.length >= 12 && value.length <= 128;
+  return typeof value === 'string' && value.length >= 8 && value.length <= 128;
 }
 
 export function parseJsonArray(value) {
