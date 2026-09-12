@@ -1,7 +1,8 @@
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie';
 
 const encoder = new TextEncoder();
-const PBKDF2_ITERATIONS = 600_000;
+// Workers Web Crypto supports up to 100,000 PBKDF2 iterations.
+const PBKDF2_ITERATIONS = 100_000;
 const SESSION_HOURS = 12;
 
 function bytesToBase64(bytes) {

@@ -6,7 +6,7 @@ describe('password storage', () => {
   it('hashes valid passwords with a random salt and verifies without exposing the password', async () => {
     const first = await hashPassword('kata-sandi-yang-kuat');
     const second = await hashPassword('kata-sandi-yang-kuat');
-    expect(first).toMatch(/^pbkdf2_sha256\$600000\$/);
+    expect(first).toMatch(/^pbkdf2_sha256\$100000\$/);
     expect(first).not.toContain('kata-sandi-yang-kuat');
     expect(first).not.toBe(second);
     expect(await verifyPassword('kata-sandi-yang-kuat', first)).toBe(true);
