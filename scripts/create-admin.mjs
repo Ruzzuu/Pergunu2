@@ -28,7 +28,9 @@ const userId = crypto.randomUUID();
 const authId = crypto.randomUUID();
 const now = new Date();
 const expires = new Date(now.getTime() + 48 * 60 * 60 * 1000);
-const sql = `BEGIN TRANSACTION;
+const transactionStart = preview ? '' : 'BEGIN TRANSACTION;';
+const transactionEnd = preview ? '' : 'COMMIT;';
+const sql = `${transactionStart}
 INSERT INTO users (id,email,full_name,role,status,password_setup_required,created_at,updated_at)
 VALUES (${q(userId)},${q(email)},${q(name)},'admin','invited',1,${q(now.toISOString())},${q(now.toISOString())})
 ON CONFLICT(email) DO UPDATE SET full_name=excluded.full_name,role='admin',status='invited',password_hash=NULL,password_setup_required=1,updated_at=excluded.updated_at;
@@ -36,7 +38,7 @@ DELETE FROM auth_tokens WHERE user_id=(SELECT id FROM users WHERE email=${q(emai
 INSERT INTO auth_tokens (id,user_id,token_hash,purpose,expires_at,created_at)
 VALUES (${q(authId)},(SELECT id FROM users WHERE email=${q(email)}),${q(tokenHash)},'invitation',${q(expires.toISOString())},${q(now.toISOString())});
 DELETE FROM sessions WHERE user_id=(SELECT id FROM users WHERE email=${q(email)});
-COMMIT;\n`;
+${transactionEnd}\n`;
 
 const tempPath = path.join(os.tmpdir(), `pergunu-admin-${crypto.randomUUID()}.sql`);
 fs.writeFileSync(tempPath, sql, { mode: 0o600 });
