@@ -17,6 +17,7 @@ import StatusTracker from "./componen/StatusTracker/StatusTracker"; // Cek statu
 
 // Import halaman-halaman terpisah (pages) yang memiliki route sendiri
 import NewsDetail from "./pages/Berita/NewsDetail";   // Dynamic news detail page
+import NewsList from "./pages/Berita/NewsList";
 import NewsDetailLayout from "./componen/NewsDetailLayout/NewsDetailLayout"; // New enhanced layout
 import Login from "./pages/Login/Login";                  // Halaman login user/admin
 import RegisterForm from "./pages/RegisterForm/RegisterForm"; // Form pendaftaran anggota
@@ -99,6 +100,7 @@ const App = () => {
         />
         
         {/* ROUTES BERITA - Halaman artikel berita detail terpisah */}
+        <Route path="/berita" element={<><Navbar /><NewsList /><Footer /></>} />
         {/* Dynamic route for news detail based on ID - UNIFIED SYSTEM */}
         <Route path="/berita/:id" element={<><Navbar /><NewsDetail /></>} />
         
@@ -115,7 +117,6 @@ const App = () => {
         <Route path="/sponsor" element={<SponsorPage />} />
         <Route path="/tentang" element={<><Navbar /><Tentang /><Footer /></>} />
         <Route path="/anggota" element={<><Navbar /><Anggota /><Footer /></>} />
-        {/* <Route path="/berita" element={<><Navbar /><Berita /><Footer /></>} /> */}
         <Route path="/layanan" element={<LayananPage />} />
         <Route path="/layanan/:id" element={<><Navbar /><LayananDetail /><Footer /></>} />
         <Route path="/beasiswa" element={<><Navbar /><Beasiswa /><Footer /></>} />

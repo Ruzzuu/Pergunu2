@@ -132,6 +132,14 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link
+                to="/berita"
+                className={location.pathname === '/berita' || location.pathname.startsWith('/berita/') ? 'sponsor-active' : ''}
+              >
+                Berita
+              </Link>
+            </li>
+            <li>
               {/* Beasiswa - Always link to /beasiswa page */}
               <Link 
                 to="/beasiswa"

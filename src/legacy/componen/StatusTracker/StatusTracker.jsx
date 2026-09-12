@@ -30,12 +30,17 @@ const StatusTracker = () => {
     return emailRegex.test(email);
   };
 
-  // Fungsi untuk mengecek status pendaftaran berdasarkan email
+  // Fungsi untuk mengecek status pendaftaran berdasarkan nomor referensi dan email
   const checkStatus = async () => {
     // Reset error dan status sebelumnya
     setError('');
     setStatus(null);
     
+    if (!reference.trim()) {
+      setError('Silakan masukkan nomor referensi pendaftaran Anda');
+      return;
+    }
+
     // Validasi email kosong
     if (!email.trim()) {
       setError('Silakan masukkan email Anda');
@@ -95,11 +100,9 @@ const StatusTracker = () => {
     }
   };
 
-  // Fungsi untuk handle Enter key press
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && email.trim() && !loading) {
-      checkStatus();
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!loading) checkStatus();
   };
 
   // Fungsi untuk reset form
@@ -116,29 +119,47 @@ const StatusTracker = () => {
         <p>Masukkan nomor referensi dan email yang Anda gunakan saat mendaftar</p>
       </div>
 
-      <div className="tracker-form">
-        <input aria-label="Nomor referensi" placeholder="Nomor referensi pendaftaran" value={reference} onChange={e => setReference(e.target.value)} onKeyPress={handleKeyPress} className="email-input" disabled={loading} />
-        <input
-          type="email"
-          placeholder="Masukkan email Anda (contoh: nama@email.com)"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onKeyPress={handleKeyPress}
-          className="email-input"
-          disabled={loading}
-        />
-        <button 
-          onClick={checkStatus}
-          disabled={!email.trim() || !reference.trim() || loading}
-          className="check-btn"
-        >
-          {loading ? '⏳ Mengecek...' : '🔍 Cek Status'}
+      <form className="tracker-form" onSubmit={handleSubmit} noValidate>
+        <div className="tracker-field">
+          <label htmlFor="registration-reference">Nomor referensi</label>
+          <input
+            id="registration-reference"
+            aria-describedby="reference-help"
+            placeholder="Contoh: REG-2026-0001"
+            value={reference}
+            onChange={(event) => { setReference(event.target.value.toUpperCase()); setError(''); }}
+            className="tracker-input"
+            autoCapitalize="characters"
+            autoComplete="off"
+            spellCheck="false"
+            disabled={loading}
+          />
+          <small id="reference-help">Nomor ini diberikan setelah pendaftaran berhasil dikirim.</small>
+        </div>
+
+        <div className="tracker-field">
+          <label htmlFor="registration-email">Email pendaftaran</label>
+          <input
+            id="registration-email"
+            type="email"
+            placeholder="nama@email.com"
+            value={email}
+            onChange={(event) => { setEmail(event.target.value); setError(''); }}
+            className="tracker-input"
+            autoComplete="email"
+            disabled={loading}
+          />
+          <small>Gunakan email yang sama dengan email saat mendaftar.</small>
+        </div>
+
+        <button type="submit" disabled={!email.trim() || !reference.trim() || loading} className="check-btn">
+          {loading ? 'Mengecek status…' : 'Cek status pendaftaran'}
         </button>
-      </div>
+      </form>
 
       {/* Error Message */}
       {error && (
-        <div className="error-message">
+        <div className="error-message" role="alert">
           <span className="error-icon">⚠️</span>
           <p>{error}</p>
         </div>
