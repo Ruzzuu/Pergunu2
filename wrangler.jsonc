@@ -32,5 +32,31 @@
   },
   "observability": {
     "enabled": true
+  },
+  "env": {
+    "preview": {
+      "name": "pergunu-situbondo-preview",
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "pergunu-db-preview",
+          "database_id": "11111111-1111-1111-1111-111111111111",
+          "migrations_dir": "migrations"
+        }
+      ],
+      "r2_buckets": [
+        {
+          "binding": "MEDIA",
+          "bucket_name": "pergunu-media-preview"
+        }
+      ],
+      "vars": {
+        "APP_URL": "https://REPLACE_WITH_PREVIEW_HOSTNAME",
+        "RESEND_FROM": "PERGUNU Situbondo <noreply@fairuzfd.dev>"
+      },
+      "observability": {
+        "enabled": true
+      }
+    }
   }
 }

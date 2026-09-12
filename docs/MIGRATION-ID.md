@@ -16,11 +16,13 @@ npx wrangler r2 bucket create pergunu-media
 npx wrangler r2 bucket create pergunu-media-preview
 ```
 
-Ganti dua UUID nol/placeholder di `wrangler.jsonc` dengan ID yang dicetak oleh Wrangler. Simpan rahasia produksi:
+Ganti UUID nol/placeholder untuk produksi dan preview di `wrangler.jsonc` dengan ID yang dicetak oleh Wrangler. Ganti pula `REPLACE_WITH_PREVIEW_HOSTNAME` setelah hostname preview diketahui. Simpan rahasia pada kedua environment:
 
 ```bash
 npx wrangler secret put RESEND_API_KEY
 npx wrangler secret put TURNSTILE_SECRET
+npx wrangler secret put RESEND_API_KEY --env preview
+npx wrangler secret put TURNSTILE_SECRET --env preview
 ```
 
 Atur `RESEND_FROM` setelah domain pengirim diverifikasi di Resend. Buat Turnstile widget untuk hostname preview dan `pergunu.fairuzfd.dev`, lalu set `VITE_TURNSTILE_SITE_KEY` pada lingkungan build.
@@ -30,9 +32,9 @@ Atur `RESEND_FROM` setelah domain pengirim diverifikasi di Resend. Buat Turnstil
 Jalankan skema terhadap preview terlebih dahulu. Jangan memasukkan file database lama ke repository baru.
 
 ```bash
-npm run db:migrate:remote
+npm run db:migrate:preview
 npm run data:prepare -- /lokasi/aman/db.json
-npm run data:import:remote
+npx wrangler d1 execute pergunu-db-preview --remote --env preview --file=.generated/legacy-import.sql
 ```
 
 `data:prepare` berhenti jika jumlah sumber bukan 6 user, 7 berita, 8 pendaftaran anggota, dan 6 beasiswa. Perintah ini:
@@ -42,6 +44,8 @@ npm run data:import:remote
 - menandai semua akun untuk membuat kata sandi baru;
 - menandai 7 gambar berita dan 3 sertifikat sebagai file hilang;
 - membersihkan HTML berita sebelum membuat SQL.
+
+Untuk deployment otomatis, tambahkan GitHub Environments bernama `preview` dan `production`. Isi masing-masing dengan `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, dan `VITE_TURNSTILE_SITE_KEY`. Batasi token Cloudflare pada Worker, dua D1 database, dua bucket R2, dan zona domain proyek ini.
 
 Periksa `.generated/legacy-import-report.json`, kemudian buat admin baru:
 
@@ -53,12 +57,12 @@ npm run admin:create -- --email admin@domain-anda --name "Nama Admin" --remote -
 
 ```bash
 npm run check
-npm run deploy
+npm run deploy:preview
 ```
 
 Di preview, uji login admin, data hasil impor, persetujuan, undangan, unggah gambar, unggah/unduh sertifikat, dan pengiriman email. Unggah ulang media yang ditandai hilang atau biarkan placeholder.
 
-Sebelum produksi, buat D1 dan bucket produksi terpisah, terapkan migrasi, ulangi impor tervalidasi, lalu buat admin produksi baru. Jangan menyalin sesi atau token preview.
+Sebelum produksi, terapkan `npm run db:migrate:remote`, ulangi impor tervalidasi dengan `npm run data:import:remote`, lalu buat admin produksi baru. Jangan menyalin sesi atau token preview. Workflow GitHub `Deploy Cloudflare` menyediakan tombol terpisah untuk preview dan production setelah secret repository dikonfigurasi.
 
 ## 5. Domain dan rollback
 
