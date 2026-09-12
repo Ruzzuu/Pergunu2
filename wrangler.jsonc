@@ -40,7 +40,7 @@
         {
           "binding": "DB",
           "database_name": "pergunu-db-preview",
-          "database_id": "11111111-1111-1111-1111-111111111111",
+          "database_id": "650388dd-b1ad-4bfd-a3ff-322acf96faf6",
           "migrations_dir": "migrations"
         }
       ],

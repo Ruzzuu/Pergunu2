@@ -8,6 +8,8 @@ Folder ini dirancang menjadi akar repository privat baru. Pastikan `git status` 
 
 Masuk ke akun Cloudflare yang dimiliki organisasi, lalu buat database dan bucket:
 
+Aktifkan R2 satu kali melalui Cloudflare Dashboard terlebih dahulu. Cloudflare dapat meminta persetujuan metode pembayaran meskipun pemakaian masih berada dalam kuota gratis. Setelah status R2 aktif, jalankan:
+
 ```bash
 npx wrangler login
 npx wrangler d1 create pergunu-db
