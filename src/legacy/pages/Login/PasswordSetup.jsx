@@ -25,7 +25,7 @@ export default function PasswordSetup({ request = false }) {
         const reset = params.get('purpose') === 'reset';
         await api(`/api/auth/${reset ? 'reset-password' : 'accept-invitation'}`, { json: { password, token: params.get('token') } });
         if (reset) navigate('/login');
-        else { const user = await synchronizeSession(); navigate(user?.role === 'admin' ? '/admin' : '/user-dashboard'); }
+        else { const user = await synchronizeSession({ force: true }); navigate(user?.role === 'admin' ? '/admin' : '/user-dashboard'); }
       }
     } catch (error) { setMessage(error.message); }
     finally { setBusy(false); }

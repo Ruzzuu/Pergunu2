@@ -67,7 +67,12 @@ export async function legacyFetch(input, init = {}) {
   }
 }
 
-export async function synchronizeSession() {
+export async function synchronizeSession({ force = false } = {}) {
+  const hasAuthHint = Boolean(localStorage.getItem('adminAuth') || localStorage.getItem('userAuth'));
+  if (!force && !hasAuthHint) {
+    for (const key of ['loggedInUser', 'currentUser', 'applications', 'applications_mode', 'users']) localStorage.removeItem(key);
+    return null;
+  }
   for (const key of ['adminAuth', 'userAuth', 'loggedInUser', 'currentUser', 'applications', 'applications_mode', 'users']) localStorage.removeItem(key);
   try {
     const { user } = await api('/api/auth/me');

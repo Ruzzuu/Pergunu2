@@ -5,7 +5,7 @@ export const apiService = {
   async init() { await api('/api/health'); },
   async login({ username, password, turnstileToken }) {
     const result = await api('/api/auth/login', { json: { identifier: username, password, turnstileToken } });
-    await synchronizeSession();
+    await synchronizeSession({ force: true });
     return result;
   },
   logout: logoutSession
