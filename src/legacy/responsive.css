@@ -1,0 +1,131 @@
+/* Shared mobile-first safeguards and layout adjustments. Component styles retain
+   control of the desktop presentation; these rules only reduce, stack, or scroll
+   content when the viewport cannot fit the desktop layout. */
+html {
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .app-wrapper { padding: 28px 20px; }
+  .hero-card { padding: 36px 32px; gap: 28px; }
+  .hero-left, .hero-right { min-width: min(100%, 280px); }
+  .container,
+  .berita-wrapper,
+  .footer-container,
+  .admin-main,
+  .dashboard-content { width: min(100%, calc(100% - 32px)); }
+  .content-grid,
+  .beasiswa-detail-container,
+  .detail-layout { grid-template-columns: 1fr; }
+  .beasiswa-sidebar { order: -1; }
+}
+
+@media (max-width: 768px) {
+  body { min-width: 0; }
+
+  .navbar { width: 100%; gap: 12px; padding: 10px 16px; }
+  .navbar-right { width: 100%; }
+  .navbar-right ul { width: 100%; gap: 8px 14px; justify-content: center; flex-wrap: wrap; }
+  .navbar-right li { font-size: 14px; }
+  .user-info { justify-content: center; flex-wrap: wrap; }
+  .user-actions { flex-wrap: wrap; justify-content: center; }
+
+  .app-wrapper { padding: 16px; min-height: auto; }
+  .hero-section { min-height: auto; padding: 48px 12px; border-radius: 14px; }
+  .hero-card { padding: 28px 22px; border-radius: 22px; }
+  .hero-title { font-size: clamp(1.7rem, 7vw, 2.3rem); line-height: 1.25; }
+  .hero-desc { font-size: 1rem; }
+  .hero-buttons, .cta-row, .contact-buttons { display: grid; grid-template-columns: 1fr; width: 100%; }
+  .hero-button, .btn-primary, .btn-secondary, .btn-submit { width: 100%; min-width: 0; }
+
+  .status-tracker { width: calc(100% - 32px); margin: 2rem auto; padding: 1.25rem; border-radius: 14px; }
+  .tracker-header { margin-bottom: 1.5rem; }
+  .tracker-header h2 { font-size: 1.45rem; }
+  .tracker-form { gap: 1rem; }
+
+  .berita-section,
+  .beasiswa-section,
+  .anggota-section,
+  .tentang-section,
+  .sponsor-section,
+  .layanan-section { padding-left: 16px; padding-right: 16px; }
+  .berita-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .berita-grid,
+  .beasiswa-grid,
+  .departemen-grid,
+  .applications-grid,
+  .certificates-grid,
+  .admin-news-grid { grid-template-columns: 1fr; }
+  .berita-card-image { height: 200px; }
+
+  .form-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .register-container,
+  .login-container { width: 100%; min-height: 100dvh; }
+  .login-left { display: none; }
+  .login-right { width: 100%; padding: 20px 16px; }
+  .login-box { width: min(100%, 480px); padding: 28px 20px; }
+  .modal-content,
+  .application-modal,
+  .beasiswa-form-modal { width: calc(100% - 24px); max-height: calc(100dvh - 24px); overflow-y: auto; }
+
+  .admin-header, .admin-main, .dashboard-content { padding-left: 16px; padding-right: 16px; }
+  .header-content, .table-header, .applications-header { align-items: stretch; flex-direction: column; }
+  .nav-content { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+  .nav-item { flex: 0 0 auto; }
+  .table-container, .admin-news-scrollable-container { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .users-table, .applications-table { min-width: 720px; }
+  .action-buttons { flex-wrap: wrap; }
+  .action-btn, .upload-btn, .edit-btn, .delete-btn { min-height: 44px; }
+}
+
+@media (max-width: 480px) {
+  .navbar { align-items: stretch; }
+  .navbar-left { align-self: center; }
+  .navbar-right ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); text-align: center; }
+  .navbar-right .login-button-wrapper { grid-column: 1 / -1; justify-content: center; }
+  .navbar-login-btn { width: 100%; }
+  .user-actions { width: 100%; }
+  .dashboard-btn, .navbar-logout-btn { flex: 1 1 140px; }
+
+  .hero-section { padding: 28px 6px; }
+  .hero-card { padding: 22px 16px; }
+  .hero-label { font-size: 12px; }
+  .hero-title { font-size: 1.65rem; }
+  .hero-button { padding: 11px 16px; }
+
+  .status-tracker { width: calc(100% - 20px); padding: 1rem; }
+  .status-result, .next-steps { padding: 1rem; }
+  .berita-section, .beasiswa-section, .anggota-section, .tentang-section, .sponsor-section, .layanan-section { padding-top: 44px; padding-bottom: 44px; }
+  .berita-card-image { height: 170px; }
+  .footer-top, .footer-bottom, .footer-left { align-items: flex-start; flex-direction: column; }
+  .footer-address { width: 100%; min-width: 0; text-align: left; }
+  .footer-social { gap: 12px; }
+
+  .add-user-form, .form-section, .beasiswa-form, .application-form { padding: 1rem; }
+  .admin-news-card__actions, .card-actions, .certificate-actions { flex-wrap: wrap; }
+  .admin-news-card__actions > *, .card-actions > *, .certificate-actions > * { flex: 1 1 120px; }
+  .welcome-section h1 { font-size: 1.45rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
