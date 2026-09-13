@@ -9,8 +9,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";   // Router hooks untuk navigasi
 import "./Login.css";                                   // Styling untuk login page
-import { FaEye, FaEyeSlash } from "react-icons/fa";     // Icons untuk toggle password visibility
 import logo from "../../assets/logo.png";               // Logo PERGUNU untuk branding
+import PasswordVisibilityField from '../../componen/PasswordVisibilityField/PasswordVisibilityField';
 import { apiService } from '../../services/apiService'; // Core service untuk API communication
 import Turnstile from '../../../Turnstile';
 import { validateLoginCredentials, checkRateLimit, resetRateLimit } from '../../utils/validation'; // Security utilities
@@ -19,9 +19,6 @@ const Login = () => {
   const [turnstileToken, setTurnstileToken] = useState('');
   // Hook untuk navigasi programmatic (redirect after login)
   const navigate = useNavigate();
-  
-  // State untuk toggle visibility password (security UX)
-  const [showPassword, setShowPassword] = useState(false);
   
   // State untuk loading indicator saat proses login (prevent double submit)
   const [isLoading, setIsLoading] = useState(false);
@@ -166,28 +163,16 @@ const Login = () => {
               autoComplete="username"
             />
             
-            {/* Password input dengan toggle visibility untuk UX */}
-            <div className="password-input-wrapper">
-              <input
-                type={showPassword ? "text" : "password"} // Toggle antara text/password
-                id="login-password"
-                name="password"
-                placeholder="Password"
-                value={loginData.password}
-                onChange={handleInputChange}
-                required                        // HTML5 validation
-                autoComplete="current-password"
-              />
-              {/* Toggle button dengan icon yang sesuai */}
-              <span
-                className="toggle-password"
-                onClick={() => setShowPassword((v) => !v)} // Toggle state
-                tabIndex={0}                    // Keyboard accessibility
-                aria-label="Show or hide password" // Screen reader support
-              >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </span>
-            </div>
+            <PasswordVisibilityField
+              id="login-password"
+              name="password"
+              label="Password"
+              placeholder="Password"
+              value={loginData.password}
+              onChange={handleInputChange}
+              required
+              autoComplete="current-password"
+            />
 
             {/* Additional login options */}
             <div className="login-options">

@@ -201,13 +201,24 @@
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
   color: #888;
   font-size: 20px;
+  cursor: pointer;
   user-select: none;
 }
+.toggle-password:hover { color: #1e7e34; background: #f0fdf4; }
 .toggle-password:focus {
   outline: 2px solid #1e7e34;
+  outline-offset: 2px;
 }
 
 /* API Message Styles */
@@ -255,4 +266,3 @@
   transform: none;
   box-shadow: none;
 }
-
