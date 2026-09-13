@@ -189,16 +189,19 @@
 
 .password-input-wrapper {
   position: relative;
+  margin-bottom: 16px;
 }
 
 .password-input-wrapper input[type="password"],
 .password-input-wrapper input[type="text"] {
-  padding-right: 40px;
+  box-sizing: border-box;
+  margin-bottom: 0;
+  padding-right: 52px;
 }
 
 .toggle-password {
   position: absolute;
-  right: 12px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   display: inline-flex;
