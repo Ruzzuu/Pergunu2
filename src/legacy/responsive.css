@@ -93,11 +93,6 @@ textarea {
 }
 
 @media (max-width: 480px) {
-  .navbar { align-items: stretch; }
-  .navbar-left { align-self: center; }
-  .navbar-right ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); text-align: center; }
-  .navbar-right .login-button-wrapper { grid-column: 1 / -1; justify-content: center; }
-  .navbar-login-btn { width: 100%; }
   .user-actions { width: 100%; }
   .dashboard-btn, .navbar-logout-btn { flex: 1 1 140px; }
 

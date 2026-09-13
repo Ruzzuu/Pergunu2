@@ -21,6 +21,14 @@
   justify-content: center;
 }
 
+.sponsor-page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 20, 12, .38), rgba(5, 20, 12, .72));
+  pointer-events: none;
+}
+
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
@@ -113,72 +121,62 @@
 
 /* Responsive Design */
 @media (max-width: 968px) {
-  .hero-stats {
+  .sponsor-hero-stats {
     gap: 2.5rem;
   }
   
-  .stat-number {
+  .sponsor-stat-number {
     font-size: 2.2rem;
   }
 }
 
 @media (max-width: 768px) {
   .sponsor-page-hero {
-    padding: 120px 0 80px;
-    min-height: 60vh;
+    padding: 88px 0 64px;
+    min-height: 0;
   }
   
-  .page-title {
-    font-size: 2.8rem;
+  .sponsor-page-title {
+    max-width: 100%;
+    font-size: clamp(2.2rem, 10vw, 3rem);
+    line-height: 1.08;
   }
   
-  .page-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
+  .sponsor-page-subtitle {
+    max-width: 34rem;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
   }
   
-  .hero-stats {
-    flex-direction: column;
-    gap: 2rem;
+  .sponsor-hero-stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 1rem;
   }
   
-  .stat-item {
-    flex-direction: row;
-    gap: 1rem;
-  }
-  
-  .stat-number {
+  .sponsor-stat-number {
     font-size: 2rem;
   }
   
-  .sponsor-page-hero .container {
-    padding: 0 1rem;
-  }
+  .sponsor-stat-label { font-size: .72rem; line-height: 1.35; }
+  .sponsor-page-hero .container { padding: 0 16px; }
 }
 
 @media (max-width: 480px) {
   .sponsor-page-hero {
-    padding: 100px 0 70px;
+    padding: 72px 0 52px;
   }
   
-  .page-title {
-    font-size: 2.2rem;
-  }
-  
-  .page-subtitle {
-    font-size: 1rem;
-  }
-  
-  .hero-icon svg {
+  .sponsor-hero-icon svg {
     width: 60px;
     height: 60px;
   }
   
-  .stat-number {
-    font-size: 1.8rem;
-  }
-  
-  .stat-label {
-    font-size: 0.8rem;
-  }
+  .sponsor-hero-stats { grid-template-columns: 1fr; gap: 14px; }
+  .sponsor-stat-item { display: grid; grid-template-columns: 72px 1fr; gap: 10px; align-items: center; text-align: left; }
+  .sponsor-stat-number { font-size: 1.8rem; }
+  .sponsor-stat-label { font-size: .78rem; }
 }

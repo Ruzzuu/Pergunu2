@@ -190,24 +190,43 @@
 }
 
 @media screen and (max-width: 768px) {
+  .hero-section { padding: 28px 12px 36px; min-height: auto; }
   .hero-card {
     flex-direction: column;
-    padding: 30px;
+    align-items: stretch;
+    gap: 22px;
+    padding: 28px 22px 24px;
+    border-radius: 22px;
   }
 
+  .hero-left, .hero-right { width: 100%; min-width: 0; }
+  .hero-label { max-width: 100%; line-height: 1.45; }
+
   .hero-title {
-    font-size: 24px;
+    margin: 0;
+    font-size: clamp(1.8rem, 8vw, 2.35rem);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
   }
+
+  .hero-desc { margin: 0 0 18px; font-size: clamp(1rem, 4.5vw, 1.2rem); line-height: 1.6; }
+  .hero-buttons { display: grid; gap: 12px; }
 
   .hero-button {
     width: 100%;
     text-align: center;
+    min-width: 0;
   }
 
   .nav-buttons {
     position: static;
     flex-direction: row;
-    justify-content: center;
-    margin-top: 20px;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 4px;
+    padding-top: 18px;
+    border-top: 1px solid #e5ebe6;
   }
+
+  .nav-button { width: 44px; height: 44px; }
 }

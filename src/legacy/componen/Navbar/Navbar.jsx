@@ -22,7 +22,7 @@ const Navbar = () => {
   const [user, setUser] = useState(null);
   
   // State untuk mobile menu toggle (reserved for future mobile menu implementation)
-  const [_isMobileMenuOpen, _setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // State untuk menyimpan active section berdasarkan scroll position
   const [activeSection, setActiveSection] = useState('');
@@ -52,6 +52,10 @@ const Navbar = () => {
       }
     }
   }, [location.pathname]); // Re-run when route changes
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   // Effect untuk mendeteksi active section berdasarkan scroll position
   useEffect(() => {
@@ -120,7 +124,19 @@ const Navbar = () => {
             <img src={logo} alt="PERGUNU" className="logo" />
           </Link>
         </div>
-        <nav className="navbar-right">
+        <button
+          type="button"
+          className="mobile-menu-toggle"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="primary-navigation"
+          aria-label={isMobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
+          onClick={() => setIsMobileMenuOpen(open => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav id="primary-navigation" className={`navbar-right${isMobileMenuOpen ? ' is-open' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
           <ul>
             <li>
               {/* Home - Link to homepage */}
