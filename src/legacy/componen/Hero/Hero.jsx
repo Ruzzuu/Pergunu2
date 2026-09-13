@@ -91,11 +91,11 @@ const Hero = () => {
             </div>
 
             <div className="nav-buttons">
-              <button className="nav-button filled" onClick={nextContent}>
-                →
+              <button className="nav-button outlined" type="button" onClick={prevContent} aria-label="Konten sebelumnya">
+                <span aria-hidden="true">←</span>
               </button>
-              <button className="nav-button outlined" onClick={prevContent}>
-                ←
+              <button className="nav-button filled" type="button" onClick={nextContent} aria-label="Konten berikutnya">
+                <span aria-hidden="true">→</span>
               </button>
             </div>
           </div>
