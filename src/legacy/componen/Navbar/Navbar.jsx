@@ -140,7 +140,7 @@ const Navbar = () => {
           <ul>
             <li>
               {/* Home - Link to homepage */}
-              <Link 
+              <Link
                 to="/"
                 className={location.pathname === '/' ? 'sponsor-active' : ''}
               >
@@ -156,8 +156,16 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link
+                to="/galeri"
+                className={location.pathname === '/galeri' ? 'sponsor-active' : ''}
+              >
+                Galeri
+              </Link>
+            </li>
+            <li>
               {/* Beasiswa - Always link to /beasiswa page */}
-              <Link 
+              <Link
                 to="/beasiswa"
                 className={location.pathname === '/beasiswa' || (isHome && activeSection === 'beasiswa') ? 'sponsor-active' : ''}
               >
@@ -184,21 +192,12 @@ const Navbar = () => {
             </li>
             <li>
               {/* Hubungi Kami - Link to contact section */}
-              {isHome ? (
-                <a 
-                  href="#hubungi"
-                  className={activeSection === 'hubungi' ? 'sponsor-active' : ''}
-                >
-                  Hubungi Kami
-                </a>
-              ) : (
-                <Link 
-                  to="/#hubungi"
-                  className={location.pathname === '/hubungi' ? 'sponsor-active' : ''}
-                >
-                  Hubungi Kami
-                </Link>
-              )}
+              <Link
+                to="/hubungi"
+                className={location.pathname === '/hubungi' ? 'sponsor-active' : ''}
+              >
+                Hubungi Kami
+              </Link>
             </li>
             <li className="login-button-wrapper">
               {user ? (

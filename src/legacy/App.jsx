@@ -28,6 +28,8 @@ import LayananPage from "./pages/Layanan/LayananPage"; // Halaman khusus layanan
 import Beasiswa from "./pages/Beasiswa/beasiswa_page";         // Halaman informasi beasiswa
 import BeasiswaDetail from "./pages/Beasiswa/BeasiswaDetail"; // Halaman detail beasiswa
 import LayananDetail from "./pages/Layanan/LayananDetail"; // Halaman detail layanan
+import GalleryPage from './pages/Gallery/GalleryPage';
+import ContactPage from './pages/Contact/ContactPage';
 
 import "./App.css";
 import PasswordSetup from './pages/Login/PasswordSetup';
@@ -101,6 +103,7 @@ const App = () => {
         
         {/* ROUTES BERITA - Halaman artikel berita detail terpisah */}
         <Route path="/berita" element={<><Navbar /><NewsList /><Footer /></>} />
+        <Route path="/galeri" element={<GalleryPage />} />
         {/* Dynamic route for news detail based on ID - UNIFIED SYSTEM */}
         <Route path="/berita/:id" element={<><Navbar /><NewsDetail /></>} />
         
@@ -115,6 +118,7 @@ const App = () => {
         {/* ROUTES HALAMAN SECTION - Versi halaman penuh dari section homepage */}
         {/* Untuk user yang ingin fokus pada satu section tertentu */}
         <Route path="/sponsor" element={<SponsorPage />} />
+        <Route path="/hubungi" element={<ContactPage />} />
         <Route path="/tentang" element={<><Navbar /><Tentang /><Footer /></>} />
         <Route path="/anggota" element={<><Navbar /><Anggota /><Footer /></>} />
         <Route path="/layanan" element={<LayananPage />} />

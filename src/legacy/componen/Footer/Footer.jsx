@@ -4,6 +4,7 @@ import React from "react";
 import "./Footer.css";
 // Import icon dari react-icons untuk tampilan yang menarik
 import { FaPhoneAlt, FaEnvelope, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import LogoPergunu from "../../assets/logo.png";  // Logo PERGUNU
 
 const Footer = () => {
@@ -22,10 +23,10 @@ const Footer = () => {
           </div>
           
           {/* Icon media sosial untuk engagement online */}
-          <div className="footer-social">
-            <div className="icon-circle"><FaInstagram /></div>   {/* Link Instagram */}
-            <div className="icon-circle"><FaYoutube /></div>     {/* Link YouTube */}
-            <div className="icon-circle"><FaWhatsapp /></div>    {/* Link WhatsApp */}
+          <div className="footer-social" aria-label="Kontak dan media sosial">
+            <span className="icon-circle icon-circle-muted" title="Instagram PERGUNU"><FaInstagram /></span>
+            <span className="icon-circle icon-circle-muted" title="YouTube PERGUNU"><FaYoutube /></span>
+            <a className="icon-circle" href="https://wa.me/6289631011926" target="_blank" rel="noreferrer" aria-label="Chat admin via WhatsApp"><FaWhatsapp /></a>
           </div>
         </div>
 
@@ -35,16 +36,16 @@ const Footer = () => {
         {/* Bagian bawah footer: informasi kontak dan alamat lengkap */}
         <div className="footer-bottom">
           {/* Nomor telepon dengan icon phone */}
-          <div className="footer-contact">
+          <a className="footer-contact" href="tel:+6289631011926">
             <FaPhoneAlt className="contact-icon" />
             <span>+62 896 3101 1926</span>  {/* Nomor WhatsApp/telepon */}
-          </div>
+          </a>
           
           {/* Email dengan icon envelope */}
-          <div className="footer-contact">
+          <a className="footer-contact" href="mailto:mediapergunusitubondo@gmail.com">
             <FaEnvelope className="contact-icon" />
             <span>mediapergunusitubondo@gmail.com</span>  {/* Email resmi */}
-          </div>
+          </a>
           
           {/* Alamat kantor lengkap */}
           <div className="footer-address">
@@ -53,6 +54,7 @@ const Footer = () => {
             <p>Timur Terminal Situbondo)</p>             {/* Patokan lokasi */}
           </div>
         </div>
+        <Link className="footer-contact-link" to="/hubungi">Lihat halaman kontak</Link>
       </div>
     </footer>
   );

@@ -52,6 +52,17 @@ const LayananPage = () => {
           </div>
         </section>
 
+        <section className="quick-access" aria-labelledby="quick-access-title">
+          <div className="quick-access-shell">
+            <div className="quick-access-heading"><p>Akses cepat</p><h2 id="quick-access-title">Layanan digital PERGUNU</h2><span>Gunakan layanan resmi berikut untuk kebutuhan pembelajaran dan administrasi.</span></div>
+            <div className="quick-access-grid">
+              <a className="quick-access-card" href="https://www.appsheet.com/start/071609a0-2a6b-4c04-ab88-ab0e50f13d9e" target="_blank" rel="noreferrer"><span aria-hidden="true">↗</span><h3>Aplikasi JAGO</h3><p>Buka aplikasi layanan JAGO PERGUNU.</p><strong>Buka JAGO</strong></a>
+              <a className="quick-access-card" href="https://pergunu.github.io/ujian-online/" target="_blank" rel="noreferrer"><span aria-hidden="true">✦</span><h3>Portal Ujian Online</h3><p>Akses portal ujian online PERGUNU Situbondo.</p><strong>Buka portal</strong></a>
+              <a className="quick-access-card" href="https://wa.me/6289631011926" target="_blank" rel="noreferrer"><span aria-hidden="true">◌</span><h3>Hubungi Admin</h3><p>Tanyakan layanan dan informasi kegiatan melalui WhatsApp.</p><strong>Chat admin</strong></a>
+            </div>
+          </div>
+        </section>
+
         {/* Section Layanan - sama seperti di homepage */}
         <Layanan />
       </div>

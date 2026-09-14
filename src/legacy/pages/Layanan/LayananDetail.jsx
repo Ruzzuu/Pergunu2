@@ -33,7 +33,7 @@ const LayananDetail = () => {
               </p>
               <div className="cta-row">
                 <a className="tentang-button" href="#implementasi">Lihat langkah implementasi</a>
-                <Link className="btn-outline" to={`/?id=${id}#layanan`}>
+                <Link className="btn-outline" to={`/layanan?id=${id}`}>
                   Buka layanan ini
                 </Link>
               </div>
@@ -115,8 +115,8 @@ const LayananDetail = () => {
               <li>Monitoring dan evaluasi berkala</li>
             </ol>
             <div className="cta-row">
-              <a className="tentang-button" href="#">Minta Proposal Teknis</a>
-              <Link className="btn-outline" to={`/?id=${id}#layanan`}>Kembali</Link>
+              <Link className="tentang-button" to="/hubungi">Minta Proposal Teknis</Link>
+              <Link className="btn-outline" to={`/layanan?id=${id}`}>Kembali</Link>
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ const LayananDetail = () => {
           )}
         </div>
         <div className="actions">
-          <Link className="tentang-button" to={`/?id=${id}#layanan`}>Kembali</Link>
+          <Link className="tentang-button" to={`/layanan?id=${id}`}>Kembali</Link>
         </div>
       </div>
     </div>
