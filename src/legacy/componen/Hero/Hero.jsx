@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Hero.css";
 import heroImg from "../../assets/hero.png"; // Import gambar hero banner
+import heroAvif from "../../assets/hero-978.avif";
 
 // Array konten hero yang bisa berganti-ganti (carousel content)
 const heroContents = [
@@ -60,9 +61,12 @@ const Hero = () => {
   return (
     <section
       className="hero-section"
-      style={{ backgroundImage: `url(${heroImg})` }}
       ref={ref}
     >
+      <picture className="hero-background" aria-hidden="true">
+        <source srcSet={heroAvif} type="image/avif" />
+        <img src={heroImg} alt="" width="978" height="564" fetchPriority="high" />
+      </picture>
       <div className="hero-overlay">
         <div className="hero-container">
           <div className="hero-card">

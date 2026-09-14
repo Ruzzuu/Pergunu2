@@ -32,6 +32,8 @@ const Anggota = () => {
               src={anggota.foto} 
               alt={anggota.nama} 
               className="anggota-img" 
+              loading="lazy"
+              decoding="async"
             />
             <h3 className="anggota-nama">{anggota.nama}</h3>
             <p className="anggota-jabatan">{anggota.jabatan}</p>

@@ -12,7 +12,7 @@ function formatDate(value) {
 function NewsImage({ item }) {
   const [missing, setMissing] = React.useState(false);
   if (!item.imageUrl || missing) return <div className="news-image-placeholder" aria-hidden="true">PERGUNU</div>;
-  return <img src={item.imageUrl} alt="" onError={() => setMissing(true)} />;
+  return <img src={item.imageUrl} alt={`Gambar berita ${item.title}`} loading="lazy" decoding="async" onError={() => setMissing(true)} />;
 }
 
 export default function Berita() {
@@ -23,7 +23,7 @@ export default function Berita() {
   React.useEffect(() => {
     let active = true;
     api('/api/news')
-      .then((items) => { if (active) { setNews(items); setState('ready'); } })
+      .then((items) => { if (active) { setNews(Array.isArray(items) ? items : []); setState('ready'); } })
       .catch(() => { if (active) setState('error'); });
     return () => { active = false; };
   }, []);

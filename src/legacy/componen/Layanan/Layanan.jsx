@@ -36,6 +36,7 @@ const Layanan = () => {
               key={item.id}
               className={`layanan-button ${selected === item.id ? "active" : ""}`} // Class conditional untuk active state
               onClick={() => setSelected(item.id)} // Set selected layanan
+              aria-pressed={selected === item.id}
             >
               <span className="radio-button">
                 {/* Radio dot hanya muncul jika selected */}
@@ -49,7 +50,7 @@ const Layanan = () => {
         <div className="layanan-content">
           {/* Conditional rendering gambar jika ada */}
           {detail.image && (
-            <img src={detail.image} alt={detail.title} className="layanan-image" />
+            <img src={detail.image} alt={detail.title} className="layanan-image" loading="lazy" decoding="async" />
           )}
           <div className="layanan-detail">
             <h3 className="detail-title">{detail.title}</h3>

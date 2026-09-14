@@ -57,6 +57,14 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setIsMobileMenuOpen(false);
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, []);
+
   // Effect untuk mendeteksi active section berdasarkan scroll position
   useEffect(() => {
     // Hanya jalankan di homepage
@@ -117,11 +125,11 @@ const Navbar = () => {
   const isHome = location.pathname === '/';
   
   return (
-    <div className="navbar-wrapper">
+    <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}`}>
       <header className="navbar">
         <div className="navbar-left">
           <Link to="/">
-            <img src={logo} alt="PERGUNU" className="logo" />
+            <img src={logo} alt="PERGUNU Situbondo" className="logo" width="48" height="48" />
           </Link>
         </div>
         <button

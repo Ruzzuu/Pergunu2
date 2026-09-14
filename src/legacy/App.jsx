@@ -32,6 +32,7 @@ import GalleryPage from './pages/Gallery/GalleryPage';
 import ContactPage from './pages/Contact/ContactPage';
 
 import "./App.css";
+import "./public-ui.css";
 import PasswordSetup from './pages/Login/PasswordSetup';
 import SessionGate from './SessionGate';
 import { PendingApplicationsProvider } from './context/PendingApplicationsContext';

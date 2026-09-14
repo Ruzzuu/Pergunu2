@@ -171,13 +171,13 @@ const Beasiswa = () => {
                 </p>
             </div>
             <div className="hero-image hero-image-frame">
-            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600" alt="Scholarship" />
+            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&auto=format&fit=crop" alt="Kegiatan pendidikan dan beasiswa" width="800" height="533" fetchPriority="high" />
             </div>
             <div className="hero-buttons">
                 <a href="#scholarships" className="btn-primary">
           🎓    Lihat Semua Beasiswa
                 </a>
-                <a href="#" className="btn-outline">Panduan Pendaftaran</a>
+                <a href="#process" className="btn-outline">Panduan Pendaftaran</a>
             </div>
             </div>
         </section>
@@ -201,7 +201,7 @@ const Beasiswa = () => {
       </section>
 
       {/* Card List - Dynamic dari API */}
-      <section className="scholarships">
+      <section className="scholarships" id="scholarships">
         <div className="container scholarships-grid">
           {loading ? (
             // Loading state
@@ -269,7 +269,7 @@ const Beasiswa = () => {
       </section>
 
       {/* Proses Pendaftaran */}
-      <section className="process">
+      <section className="process" id="process">
         <div className="container">
           <h2 className="process-title">Proses Pendaftaran</h2>
           <p className="process-desc">Ikuti langkah langkah berikut untuk mendaftar beasiswa PERGUNU Situbondo</p>
@@ -282,17 +282,17 @@ const Beasiswa = () => {
             <div className="step">
               <div className="circle">2</div>
               <h4>Siapkan Dokumen</h4>
-              <p>Siapkan program beasiswa yang sesuai dengan kebutuhan dan kualifikasi anda</p>
+              <p>Siapkan identitas dan dokumen persyaratan yang diminta oleh program.</p>
             </div>
             <div className="step">
               <div className="circle">3</div>
               <h4>Submit Aplikasi</h4>
-              <p>Submit program beasiswa yang sesuai dengan kebutuhan dan kualifikasi anda</p>
+              <p>Isi formulir dengan data yang benar lalu kirim pendaftaran Anda.</p>
             </div>
             <div className="step">
               <div className="circle">4</div>
-              <h4>Pilih Program</h4>
-              <p>Pilih program beasiswa yang sesuai dengan kebutuhan dan kualifikasi anda</p>
+              <h4>Pantau Hasil</h4>
+              <p>Simpan nomor referensi dan pantau informasi seleksi dari PERGUNU.</p>
             </div>
           </div>
         </div>

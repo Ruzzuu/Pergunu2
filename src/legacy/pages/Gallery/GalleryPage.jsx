@@ -17,7 +17,7 @@ export default function GalleryPage() {
   React.useEffect(() => {
     let active = true;
     api('/api/news')
-      .then(news => { if (active) { setItems(news.filter(item => item.imageUrl)); setState('ready'); } })
+      .then(news => { if (active) { setItems(Array.isArray(news) ? news.filter(item => item.imageUrl) : []); setState('ready'); } })
       .catch(() => { if (active) setState('error'); });
     return () => { active = false; };
   }, []);
@@ -38,7 +38,7 @@ export default function GalleryPage() {
         {state === 'ready' && items.length === 0 && <div className="gallery-empty"><span aria-hidden="true">📷</span><h2>Dokumentasi akan segera hadir</h2><p>Foto kegiatan akan tampil di sini setelah admin menerbitkan berita dengan gambar.</p><Link to="/berita">Lihat berita</Link></div>}
         {state === 'ready' && items.length > 0 && <div className="gallery-grid">
           {items.map((item, index) => <Link key={item.id} to={`/berita/${item.id}`} className={`gallery-card gallery-card-${(index % 5) + 1}`}>
-            <img src={item.imageUrl} alt={item.title} />
+            <img src={item.imageUrl} alt={`Dokumentasi ${item.title}`} loading="lazy" decoding="async" />
             <span className="gallery-card-overlay"><strong>{item.title}</strong>{item.publishedAt && <time dateTime={item.publishedAt}>{formatDate(item.publishedAt)}</time>}</span>
           </Link>)}
         </div>}

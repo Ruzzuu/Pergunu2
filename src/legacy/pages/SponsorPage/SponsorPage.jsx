@@ -4,6 +4,8 @@ import Navbar from "../../componen/Navbar/Navbar";
 import Footer from "../../componen/Footer/Footer";
 import Sponsor from "../../componen/Sponsor/Sponsor";
 import beasiswaPoster from "../../assets/beasiswa_poster.png";
+import sponsorHeroSmall from "../../assets/beasiswa-poster-768.avif";
+import sponsorHeroLarge from "../../assets/beasiswa-poster-1600.avif";
 import './SponsorPage.css';
 
 const SponsorPage = () => {
@@ -28,15 +30,15 @@ const SponsorPage = () => {
       <Navbar />
       <div className="page-content">
         {/* Hero Section untuk halaman Sponsor */}
-        <section 
-          className="sponsor-page-hero"
-          style={{
-            backgroundImage: `url(${beasiswaPoster})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
+        <section className="sponsor-page-hero">
+          <picture className="page-hero-media" aria-hidden="true">
+            <source
+              type="image/avif"
+              srcSet={`${sponsorHeroSmall} 768w, ${sponsorHeroLarge} 1600w`}
+              sizes="100vw"
+            />
+            <img src={beasiswaPoster} alt="" width="1600" height="1067" fetchPriority="high" />
+          </picture>
           <div className="container">
             <div className="sponsor-hero-content">
               <h1 className="sponsor-page-title">Partner & Sponsor</h1>

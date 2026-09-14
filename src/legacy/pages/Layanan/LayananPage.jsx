@@ -3,6 +3,8 @@ import Navbar from "../../componen/Navbar/Navbar";
 import Footer from "../../componen/Footer/Footer";
 import Layanan from "../../componen/Layanan/Layanan";
 import bagroundlayanan from "../../assets/bagroundlayanan.png";
+import layananHeroSmall from "../../assets/bagroundlayanan-768.avif";
+import layananHeroLarge from "../../assets/bagroundlayanan-1600.avif";
 import './LayananPage.css';
 
 const LayananPage = () => {
@@ -11,15 +13,15 @@ const LayananPage = () => {
       <Navbar />
       <div className="page-content">
         {/* Hero Section untuk halaman Layanan */}
-        <section 
-          className="page-hero"
-          style={{
-            backgroundImage: `url(${bagroundlayanan})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
+        <section className="page-hero">
+          <picture className="page-hero-media" aria-hidden="true">
+            <source
+              type="image/avif"
+              srcSet={`${layananHeroSmall} 768w, ${layananHeroLarge} 1600w`}
+              sizes="100vw"
+            />
+            <img src={bagroundlayanan} alt="" width="1600" height="1323" fetchPriority="high" />
+          </picture>
           <div className="container">
             <div className="hero-content">
               <h1 className="page-title">Layanan PERGUNU</h1>

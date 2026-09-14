@@ -1,7 +1,7 @@
 // Sponsor Component - Komponen untuk menampilkan partner dan sponsor PERGUNU
 // Menampilkan logo dan deskripsi organisasi yang bekerjasama
 import React from 'react';
-import { Link } from 'react-router-dom';                    // Link untuk navigasi ke halaman sponsor
+import { Link, useLocation } from 'react-router-dom';                    // Link untuk navigasi ke halaman sponsor
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';  // Custom hook untuk animasi scroll
 import './Sponsor.css';
 
@@ -12,6 +12,8 @@ import muhammadiyahLogo from '../../assets/MUH.png';
 import nahdlatulUlamaLogo from '../../assets/NU.png';
 
 const Sponsor = () => {
+  const location = useLocation();
+  const isSponsorPage = location.pathname === '/sponsor';
   // Menggunakan custom hook untuk animasi saat scroll dengan threshold 10%
   const [ref, isVisible] = useScrollAnimation(0.1);
 
@@ -68,6 +70,8 @@ const Sponsor = () => {
                 <img 
                   src={sponsor.logo} 
                   alt={sponsor.name}  // Alt text untuk accessibility
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               
@@ -85,7 +89,9 @@ const Sponsor = () => {
           <h3>Ingin Menjadi Partner?</h3>
           <p>Bergabunglah dengan kami untuk memajukan pendidikan Indonesia</p>
           {/* Link ke halaman sponsor untuk informasi lebih lengkap */}
-          <Link to="/sponsor" className="sponsor-btn">Lihat Semua Sponsor</Link>
+          <Link to={isSponsorPage ? "/hubungi" : "/sponsor"} className="sponsor-btn">
+            {isSponsorPage ? "Hubungi Tim Kemitraan" : "Lihat Semua Sponsor"}
+          </Link>
         </div>
       </div>
     </section>
