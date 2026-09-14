@@ -22,13 +22,6 @@ const LayananPage = () => {
         >
           <div className="container">
             <div className="hero-content">
-              <div className="hero-icon">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M20 12L21.09 15.26L24 16L21.09 16.74L20 20L18.91 16.74L16 16L18.91 15.26L20 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M4 4L5.09 7.26L8 8L5.09 8.74L4 12L2.91 8.74L0 8L2.91 7.26L4 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
               <h1 className="page-title">Layanan PERGUNU</h1>
               <p className="page-subtitle">
                 Memberikan berbagai layanan terbaik untuk mendukung pengembangan 

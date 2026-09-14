@@ -39,14 +39,6 @@ const SponsorPage = () => {
         >
           <div className="container">
             <div className="sponsor-hero-content">
-              <div className="sponsor-hero-icon">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M23 21V19C23 17.1362 21.7252 15.5701 20 15.126" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M16 3.12598C17.7252 3.56986 19 5.13616 19 7C19 8.86384 17.7252 10.4301 16 10.874" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
               <h1 className="sponsor-page-title">Partner & Sponsor</h1>
               <p className="sponsor-page-subtitle">
                 Berkolaborasi dengan berbagai institusi dan organisasi untuk kemajuan 
