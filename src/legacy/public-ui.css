@@ -72,13 +72,22 @@ a:hover { color: var(--green-dark); }
 .navbar-left a { display: flex; border-radius: 50%; }
 .logo { width: 48px; height: 48px; }
 .navbar-right { flex: 1 1 auto; margin-left: 0; }
-.navbar-right ul { width: 100%; gap: clamp(14px, 1.7vw, 26px); }
+.navbar-right > ul {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) auto;
+  width: 100%;
+  gap: clamp(10px, 1.4vw, 22px);
+  align-items: center;
+}
 .navbar-right li { font-size: 14px; }
 .navbar-right ul li a {
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
   min-height: 44px;
+  white-space: nowrap;
   color: var(--text-primary);
   transition: color 160ms ease;
 }
@@ -102,7 +111,7 @@ a:hover { color: var(--green-dark); }
   align-items: center;
   justify-content: center;
 }
-.navbar-right ul > li.login-button-wrapper { margin-left: auto; }
+.navbar-right ul > li.login-button-wrapper { margin-left: 0; }
 .navbar-login-btn.sponsor-active::after,
 .navbar-login-btn.active::after { display: none; }
 
@@ -561,7 +570,7 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
     box-shadow: var(--shadow-md);
   }
   .navbar-right.is-open { display: block; }
-  .navbar-right ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 20px; align-items: stretch; }
+  .navbar-right > ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 20px; align-items: stretch; }
   .navbar-right li { font-size: 15px; }
   .navbar-right ul li a { width: 100%; padding: 4px 0; }
   .navbar-right ul li a.sponsor-active::after { right: auto; width: 28px; }
