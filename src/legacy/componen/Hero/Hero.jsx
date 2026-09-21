@@ -70,13 +70,11 @@ const Hero = () => {
       <div className="hero-overlay">
         <div className="hero-container">
           <div className="hero-card">
-            <div className="hero-left">
+            <div className="hero-content">
               <p className="hero-label">
                 PERGUNU (Persatuan Guru Nahdlatul Ulama)
               </p>
               <h1 className="hero-title">{heroContents[index].title}</h1>
-            </div>
-            <div className="hero-right">
               <p className="hero-desc">{heroContents[index].desc}</p>
               <div className="hero-buttons">
                 <a
@@ -95,11 +93,11 @@ const Hero = () => {
             </div>
 
             <div className="nav-buttons">
-              <button className="nav-button outlined" type="button" onClick={prevContent} aria-label="Konten sebelumnya">
-                <span aria-hidden="true">←</span>
-              </button>
               <button className="nav-button filled" type="button" onClick={nextContent} aria-label="Konten berikutnya">
                 <span aria-hidden="true">→</span>
+              </button>
+              <button className="nav-button outlined" type="button" onClick={prevContent} aria-label="Konten sebelumnya">
+                <span aria-hidden="true">←</span>
               </button>
             </div>
           </div>

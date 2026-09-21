@@ -132,15 +132,15 @@ a:hover { color: var(--green-dark); }
 /* Home hero */
 .app-wrapper {
   min-height: 0;
-  padding: 24px;
-  background: #eef1ee;
+  padding: 0;
+  background: transparent;
 }
 .hero-section {
   position: relative;
-  min-height: clamp(590px, 72vh, 760px);
-  padding: clamp(48px, 7vw, 88px) 24px;
-  border-radius: var(--radius-panel);
-  box-shadow: var(--shadow-md);
+  min-height: clamp(500px, 62vh, 680px);
+  padding: clamp(72px, 9vw, 112px) 0;
+  border-radius: 0;
+  box-shadow: none;
   isolation: isolate;
 }
 .hero-background,
@@ -168,20 +168,21 @@ a:hover { color: var(--green-dark); }
 .hero-overlay { position: relative; z-index: 1; }
 .hero-container { max-width: var(--container); }
 .hero-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.85fr);
-  gap: clamp(32px, 5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
   max-width: var(--container);
-  padding: clamp(40px, 5vw, 64px);
-  border-radius: var(--radius-panel);
-  box-shadow: 0 18px 50px rgba(9, 38, 20, 0.16);
+  padding: clamp(20px, 4vw, 48px);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  opacity: 1;
+  text-align: center;
 }
-.hero-left,
-.hero-right { min-width: 0; }
-.hero-left { align-self: start; }
-.hero-right { align-self: end; padding-right: 56px; }
+.hero-content { width: min(100%, 820px); margin-inline: auto; }
 .hero-label {
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   padding: 7px 12px;
   border-radius: 8px;
   background: var(--green-surface);
@@ -191,23 +192,25 @@ a:hover { color: var(--green-dark); }
   letter-spacing: 0.03em;
 }
 .hero-title {
-  max-width: 18ch;
+  max-width: 22ch;
   margin: 0;
-  color: var(--text-primary);
+  color: #fff;
   font-size: clamp(2.35rem, 4.7vw, 4rem);
   line-height: 1.1;
   letter-spacing: -0.035em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .34);
 }
 .hero-desc {
-  max-width: 48ch;
-  margin: 0 0 28px;
-  color: var(--text-secondary);
+  max-width: 58ch;
+  margin: 22px auto 28px;
+  color: rgba(255, 255, 255, .9);
   font-size: clamp(1rem, 1.5vw, 1.15rem);
   line-height: 1.7;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .3);
 }
-.hero-buttons { justify-content: flex-start; margin: 0; padding: 0; }
+.hero-buttons { justify-content: center; margin: 0; padding: 0; }
 .hero-button { min-width: 0; padding: 13px 20px; border-radius: var(--radius-control); }
-.nav-buttons { right: 48px; gap: 10px; }
+.nav-buttons { position: static; flex-direction: row; justify-content: center; gap: 14px; margin-top: 32px; transform: none; }
 .nav-button { width: 44px; height: 44px; }
 .nav-button:hover { transform: translateY(-1px); }
 
@@ -537,9 +540,9 @@ a:hover { color: var(--green-dark); }
 /* Contact */
 .contact-page { background: var(--surface-muted); color: var(--text-primary); }
 .contact-main { min-height: 0; }
-.contact-hero { padding: clamp(56px, 7vw, 88px) 0; background: var(--green-surface); }
-.contact-hero h1 { max-width: 18ch; font-size: clamp(2.4rem, 5vw, 3.7rem); line-height: 1.1; letter-spacing: -0.03em; }
-.contact-hero span { max-width: 60ch; color: var(--text-secondary); }
+.contact-hero { min-height: clamp(360px, 54vh, 560px); display: flex; align-items: center; padding: clamp(72px, 9vw, 112px) 0; background: transparent; }
+.contact-hero h1 { max-width: 18ch; color: #fff; font-size: clamp(2.4rem, 5vw, 3.7rem); line-height: 1.1; letter-spacing: -0.03em; text-shadow: 0 2px 10px rgba(0,0,0,.32); }
+.contact-hero span { max-width: 60ch; color: rgba(255,255,255,.88); text-shadow: 0 1px 5px rgba(0,0,0,.3); }
 .contact-grid { gap: 18px; padding-block: var(--section-space); }
 .contact-card {
   min-height: 164px;
@@ -634,9 +637,9 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
   .page-hero .container,
   .sponsor-page-hero .container { width: min(calc(100% - 32px), var(--container)); }
 
-  .app-wrapper { padding: 12px; }
-  .hero-section { min-height: 0; padding: 28px 12px; border-radius: 16px; }
-  .hero-card { gap: 24px; padding: 28px 22px 24px; border-radius: 18px; }
+  .app-wrapper { padding: 0; }
+  .hero-section { min-height: 0; padding: 64px 0; border-radius: 0; }
+  .hero-card { gap: 24px; padding: 28px 16px 24px; border-radius: 0; }
   .hero-title { max-width: 100%; font-size: clamp(2rem, 10vw, 2.75rem); overflow-wrap: normal; }
   .hero-desc { font-size: 1rem; line-height: 1.65; }
   .hero-buttons { display: grid; grid-template-columns: 1fr; gap: 10px; }
