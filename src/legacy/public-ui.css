@@ -210,9 +210,6 @@ a:hover { color: var(--green-dark); }
 }
 .hero-buttons { justify-content: center; margin: 0; padding: 0; }
 .hero-button { min-width: 0; padding: 13px 20px; border-radius: var(--radius-control); }
-.nav-buttons { position: static; flex-direction: row; justify-content: center; gap: 14px; margin-top: 32px; transform: none; }
-.nav-button { width: 44px; height: 44px; }
-.nav-button:hover { transform: translateY(-1px); }
 
 /* Home content */
 .tentang-section,
@@ -610,7 +607,6 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
   .user-info { align-items: flex-start; flex-direction: column; }
   .hero-card { grid-template-columns: 1fr; }
   .hero-right { padding-right: 0; }
-  .nav-buttons { position: static; grid-column: 1 / -1; flex-direction: row; justify-content: center; transform: none; padding-top: 20px; border-top: 1px solid var(--border); }
   .hero .hero-content { grid-template-columns: 1fr; }
   .hero .hero-buttons { grid-column: 1; }
   .hero-image { max-width: 620px; }
@@ -644,7 +640,6 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
   .hero-desc { font-size: 1rem; line-height: 1.65; }
   .hero-buttons { display: grid; grid-template-columns: 1fr; gap: 10px; }
   .hero-button { width: 100%; }
-  .nav-buttons { margin-top: 4px; padding-top: 18px; }
 
   .tentang-container { grid-template-columns: 1fr; gap: 32px; }
   .tentang-middle { max-width: 360px; }

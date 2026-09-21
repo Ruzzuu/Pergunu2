@@ -46,17 +46,16 @@ const Hero = () => {
     return () => window.removeEventListener("scroll", handleScroll); // Cleanup
   }, []);
 
-  // Fungsi untuk navigasi ke konten selanjutnya (carousel)
-  const nextContent = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % heroContents.length);
-  };
+  // Rotate the hero copy automatically while the homepage is mounted.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
 
-  // Fungsi untuk navigasi ke konten sebelumnya (carousel)
-  const prevContent = () => {
-    setIndex((prevIndex) =>
-      (prevIndex - 1 + heroContents.length) % heroContents.length
-    );
-  };
+    const rotation = window.setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % heroContents.length);
+    }, 6000);
+
+    return () => window.clearInterval(rotation);
+  }, []);
 
   return (
     <section
@@ -92,14 +91,6 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="nav-buttons">
-              <button className="nav-button filled" type="button" onClick={nextContent} aria-label="Konten berikutnya">
-                <span aria-hidden="true">→</span>
-              </button>
-              <button className="nav-button outlined" type="button" onClick={prevContent} aria-label="Konten sebelumnya">
-                <span aria-hidden="true">←</span>
-              </button>
-            </div>
           </div>
         </div>
       </div>
