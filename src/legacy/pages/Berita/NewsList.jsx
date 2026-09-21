@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../../../api';
+import beritaPageImage from '../../assets/beritapage.jpeg';
 import './NewsList.css';
 
 function formatDate(value) {
@@ -28,6 +29,9 @@ export default function NewsList() {
 
   return <main className="news-list-page">
     <header className="news-list-hero">
+      <picture className="page-hero-media" aria-hidden="true">
+        <img src={beritaPageImage} alt="" width="1100" height="619" fetchPriority="high" />
+      </picture>
       <div className="news-list-shell">
         <p>Berita PERGUNU</p>
         <h1>Informasi dan kegiatan terbaru</h1>

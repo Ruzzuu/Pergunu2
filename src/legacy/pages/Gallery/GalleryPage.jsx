@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { api } from '../../../api';
 import Navbar from '../../componen/Navbar/Navbar';
 import Footer from '../../componen/Footer/Footer';
+import galeriImage from '../../assets/galeri.jpeg';
 import './GalleryPage.css';
 
 function formatDate(value) {
@@ -26,6 +27,9 @@ export default function GalleryPage() {
     <Navbar />
     <main>
       <header className="gallery-hero">
+        <picture className="page-hero-media" aria-hidden="true">
+          <img src={galeriImage} alt="" width="1100" height="618" fetchPriority="high" />
+        </picture>
         <div className="gallery-shell">
           <p className="gallery-eyebrow">Dokumentasi kegiatan</p>
           <h1>Momen PERGUNU Situbondo</h1>

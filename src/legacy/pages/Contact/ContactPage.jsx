@@ -2,6 +2,7 @@ import React from 'react';
 import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
 import Navbar from '../../componen/Navbar/Navbar';
 import Footer from '../../componen/Footer/Footer';
+import contactHeroImage from '../../assets/hubungikami.jpeg';
 import './ContactPage.css';
 
 const whatsappUrl = 'https://wa.me/6289631011926';
@@ -10,7 +11,12 @@ export default function ContactPage() {
   return <div className="contact-page">
     <Navbar />
     <main className="contact-main">
-      <section className="contact-hero"><div className="contact-shell"><p>Hubungi PERGUNU</p><h1>Mari terhubung dan berkolaborasi</h1><span>Tim PERGUNU Situbondo siap membantu pertanyaan seputar keanggotaan, kegiatan, dan kemitraan.</span></div></section>
+      <section className="contact-hero">
+        <picture className="page-hero-media" aria-hidden="true">
+          <img src={contactHeroImage} alt="" width="1100" height="733" fetchPriority="high" />
+        </picture>
+        <div className="contact-shell"><p>Hubungi PERGUNU</p><h1>Mari terhubung dan berkolaborasi</h1><span>Tim PERGUNU Situbondo siap membantu pertanyaan seputar keanggotaan, kegiatan, dan kemitraan.</span></div>
+      </section>
       <section className="contact-shell contact-grid">
         <a className="contact-card" href="tel:+6289631011926"><FaPhoneAlt /><div><small>Telepon</small><strong>+62 896 3101 1926</strong><span>Hubungi kami melalui panggilan.</span></div></a>
         <a className="contact-card" href="mailto:mediapergunusitubondo@gmail.com"><FaEnvelope /><div><small>Email</small><strong>mediapergunusitubondo@gmail.com</strong><span>Kirim pertanyaan atau proposal Anda.</span></div></a>
