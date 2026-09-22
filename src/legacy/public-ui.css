@@ -137,7 +137,7 @@ a:hover { color: var(--green-dark); }
 }
 .hero-section {
   position: relative;
-  min-height: clamp(500px, 62vh, 680px);
+  min-height: clamp(560px, 68vh, 700px);
   padding: clamp(72px, 9vw, 112px) 0;
   border-radius: 0;
   box-shadow: none;
@@ -179,6 +179,7 @@ a:hover { color: var(--green-dark); }
   box-shadow: none;
   opacity: 1;
   text-align: center;
+  justify-content: center;
 }
 .hero-content { width: min(100%, 820px); margin-inline: auto; }
 .hero-label {
@@ -193,6 +194,7 @@ a:hover { color: var(--green-dark); }
 }
 .hero-title {
   max-width: 22ch;
+  min-height: 4.5em;
   margin: 0;
   color: #fff;
   font-size: clamp(2.35rem, 4.7vw, 4rem);
@@ -202,6 +204,7 @@ a:hover { color: var(--green-dark); }
 }
 .hero-desc {
   max-width: 58ch;
+  min-height: 5.1em;
   margin: 22px auto 28px;
   color: rgba(255, 255, 255, .9);
   font-size: clamp(1rem, 1.5vw, 1.15rem);
@@ -634,10 +637,10 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
   .sponsor-page-hero .container { width: min(calc(100% - 32px), var(--container)); }
 
   .app-wrapper { padding: 0; }
-  .hero-section { min-height: 0; padding: 64px 0; border-radius: 0; }
+  .hero-section { min-height: 620px; padding: 64px 0; border-radius: 0; }
   .hero-card { gap: 24px; padding: 28px 16px 24px; border-radius: 0; }
-  .hero-title { max-width: 100%; font-size: clamp(2rem, 10vw, 2.75rem); overflow-wrap: normal; }
-  .hero-desc { font-size: 1rem; line-height: 1.65; }
+  .hero-title { max-width: 100%; min-height: 5.5em; font-size: clamp(2rem, 10vw, 2.75rem); overflow-wrap: normal; }
+  .hero-desc { min-height: 6.6em; font-size: 1rem; line-height: 1.65; }
   .hero-buttons { display: grid; grid-template-columns: 1fr; gap: 10px; }
   .hero-button { width: 100%; }
 
@@ -711,7 +714,7 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
   .navbar-right ul { grid-template-columns: 1fr; }
   .navbar-right ul > li.login-button-wrapper { grid-column: 1; margin-left: 0; }
   .hero-card { padding-inline: 18px; }
-  .hero-title { font-size: 2rem; }
+  .hero-title { min-height: 5.5em; font-size: 2rem; }
   .card-actions { grid-template-columns: 1fr; }
   .hero-stats,
   .sponsor-hero-stats { grid-template-columns: 1fr; gap: 14px; }
