@@ -134,17 +134,18 @@
 }
 
 .hero-button.secondary {
-  background-color: transparent;
-  color: #0F7536;
-  border: 2px solid #0F7536;
-  box-shadow: 0 4px 15px rgba(15, 117, 54, 0.1);
+  background: rgba(255, 255, 255, 0.96);
+  color: #09552a;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 22px rgba(5, 33, 15, 0.2);
 }
 
 .hero-button.secondary:hover {
   background-color: #0F7536;
   color: white;
+  border-color: #0F7536;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(15, 117, 54, 0.2);
+  box-shadow: 0 10px 24px rgba(15, 117, 54, 0.32);
 }
 
 @media screen and (max-width: 768px) {
