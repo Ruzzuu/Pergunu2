@@ -51,11 +51,15 @@ a:hover { color: var(--green-dark); }
 /* Navigation */
 .navbar-wrapper {
   position: sticky;
-  top: 0;
+  top: 8px;
   z-index: 100;
+  width: min(calc(100% - 24px), 1240px);
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 16px;
   border-bottom: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 1px 10px rgba(23, 33, 26, 0.04);
+  box-shadow: 0 4px 18px rgba(23, 33, 26, 0.08);
   backdrop-filter: blur(10px);
   transform: translateY(0);
   transition: transform 220ms ease;
@@ -71,7 +75,7 @@ a:hover { color: var(--green-dark); }
 }
 
 .navbar {
-  width: min(calc(100% - 48px), var(--container));
+  width: min(calc(100% - 24px), var(--container));
   max-width: var(--container);
   min-height: 72px;
   margin-inline: auto;
@@ -647,6 +651,7 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
   .page-hero .container,
   .sponsor-page-hero .container { width: min(calc(100% - 32px), var(--container)); }
 
+  .navbar-wrapper { width: calc(100% - 16px); border-radius: 14px; }
   .app-wrapper { padding: 0; }
   .hero-section { min-height: 620px; padding: 64px 0; border-radius: 0; }
   .hero-card { gap: 24px; padding: 28px 16px 24px; border-radius: 0; }
