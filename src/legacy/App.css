@@ -13,10 +13,10 @@ body {
 
 /* Ini hanya untuk halaman / */
 .app-wrapper {
-background-color: #f3f3f3; /* background abu-abu untuk Hero */
-  padding: 40px 40px;
+  background: none;
+  padding: 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: 0;
 }
 
 html {

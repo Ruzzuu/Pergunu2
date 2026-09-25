@@ -52,10 +52,10 @@ a:hover { color: var(--green-dark); }
 .navbar-wrapper {
   position: relative;
   z-index: 100;
-  width: min(calc(100% - 24px), 1240px);
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 0 0 18px 18px;
   border-bottom: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 4px 18px rgba(23, 33, 26, 0.08);
@@ -63,11 +63,11 @@ a:hover { color: var(--green-dark); }
 }
 
 .navbar {
-  width: min(calc(100% - 24px), var(--container));
-  max-width: var(--container);
+  width: 100%;
+  max-width: none;
   min-height: 72px;
   margin-inline: auto;
-  padding: 10px 0;
+  padding: 10px clamp(16px, 3vw, 40px);
   justify-content: flex-start;
   gap: 24px;
 }
@@ -136,12 +136,12 @@ a:hover { color: var(--green-dark); }
 .app-wrapper {
   min-height: 0;
   padding: 0;
-  background: transparent;
+  background: none;
 }
 .hero-section {
   position: relative;
-  min-height: clamp(560px, 68vh, 700px);
-  padding: clamp(72px, 9vw, 112px) 0;
+  min-height: clamp(520px, 72vh, 680px);
+  padding: clamp(56px, 8vw, 96px) 0;
   border-radius: 0;
   box-shadow: none;
   isolation: isolate;
@@ -639,7 +639,8 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
   .page-hero .container,
   .sponsor-page-hero .container { width: min(calc(100% - 32px), var(--container)); }
 
-  .navbar-wrapper { width: calc(100% - 16px); border-radius: 14px; }
+  .navbar-wrapper { width: 100%; border-radius: 0 0 14px 14px; }
+  .navbar { width: 100%; max-width: none; }
   .app-wrapper { padding: 0; }
   .hero-section { min-height: 620px; padding: 64px 0; border-radius: 0; }
   .hero-card { gap: 24px; padding: 28px 16px 24px; border-radius: 0; }

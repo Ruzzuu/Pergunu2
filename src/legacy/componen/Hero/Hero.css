@@ -3,16 +3,15 @@
 
 .hero-section {
   width: 100%;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
+  min-height: clamp(520px, 72vh, 680px);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px;
+  padding: clamp(56px, 8vw, 96px) 20px;
   font-family: 'Poppins', sans-serif;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9 );
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
   background-clip: padding-box;
   box-sizing: border-box;
@@ -28,9 +27,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  background-color: white;
-  border-radius: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
   padding: 48px 60px;
   max-width: 1240px;
   width: 100%;
