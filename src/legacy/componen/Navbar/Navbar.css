@@ -5,8 +5,7 @@
 .navbar-wrapper {
   width: 100%;
   background-color: white;
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 100;
   border-bottom: 1px solid #e0e0e0; /* garis bawah halus */
 }
@@ -328,7 +327,7 @@
   .navbar-right ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 8px; }
   .navbar-right li { min-height: 44px; display: flex; align-items: center; justify-content: center; }
   .navbar-right .login-button-wrapper { grid-column: 1 / -1; }
-  .navbar-wrapper { position: sticky; }
+  .navbar-wrapper { position: relative; }
 }
 
 @media (max-width: 380px) {

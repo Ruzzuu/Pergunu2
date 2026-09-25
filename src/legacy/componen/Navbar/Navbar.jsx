@@ -8,7 +8,7 @@ import { logoutSession } from '../../services/cloudflare';
 // - User session persistence dan security
 // - Conditional navigation berdasarkan user role
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";  // Router hooks untuk navigasi
 import "./Navbar.css";
 import logo from "../../assets/logo.png";  // Logo PERGUNU
@@ -23,8 +23,6 @@ const Navbar = () => {
   
   // State untuk mobile menu toggle (reserved for future mobile menu implementation)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isNavbarHidden, setIsNavbarHidden] = useState(false);
-  const previousScrollY = useRef(0);
   
   // State untuk menyimpan active section berdasarkan scroll position
   const [activeSection, setActiveSection] = useState('');
@@ -58,29 +56,6 @@ const Navbar = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
-
-  useEffect(() => {
-    previousScrollY.current = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const previousY = previousScrollY.current;
-      const scrollDelta = currentScrollY - previousY;
-
-      if (isMobileMenuOpen || currentScrollY <= 12) {
-        setIsNavbarHidden(false);
-      } else if (scrollDelta > 4) {
-        setIsNavbarHidden(true);
-      } else if (scrollDelta < -4) {
-        setIsNavbarHidden(false);
-      }
-
-      previousScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -150,7 +125,7 @@ const Navbar = () => {
   const isHome = location.pathname === '/';
   
   return (
-    <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}${isNavbarHidden ? ' navbar-hidden' : ''}`}>
+    <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}`}>
       <header className="navbar">
         <div className="navbar-left">
           <Link to="/">

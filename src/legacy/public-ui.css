@@ -50,8 +50,7 @@ a:hover { color: var(--green-dark); }
 
 /* Navigation */
 .navbar-wrapper {
-  position: sticky;
-  top: 8px;
+  position: relative;
   z-index: 100;
   width: min(calc(100% - 24px), 1240px);
   margin: 0 auto;
@@ -61,17 +60,6 @@ a:hover { color: var(--green-dark); }
   background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 4px 18px rgba(23, 33, 26, 0.08);
   backdrop-filter: blur(10px);
-  transform: translateY(0);
-  transition: transform 220ms ease;
-  will-change: transform;
-}
-.navbar-wrapper.navbar-hidden {
-  transform: translateY(-110%);
-  pointer-events: none;
-}
-.navbar-wrapper.menu-open.navbar-hidden {
-  transform: translateY(0);
-  pointer-events: auto;
 }
 
 .navbar {
@@ -741,7 +729,6 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .navbar-wrapper { transition: none; }
   .hero-card,
   .tentang-left,
   .tentang-middle,
