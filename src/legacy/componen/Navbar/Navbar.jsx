@@ -125,6 +125,7 @@ const Navbar = () => {
   const isHome = location.pathname === '/';
   
   return (
+    <>
     <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}`}>
       <header className="navbar">
         <div className="navbar-left">
@@ -242,6 +243,8 @@ const Navbar = () => {
         </nav>
       </header>
     </div>
+    <div className="navbar-spacer" aria-hidden="true" />
+    </>
   );
 };
 
