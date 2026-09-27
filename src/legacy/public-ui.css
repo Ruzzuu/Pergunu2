@@ -63,8 +63,23 @@ a:hover { color: var(--green-dark); }
   background: rgba(255, 255, 255, 0.97);
   box-shadow: 0 4px 18px rgba(23, 33, 26, 0.08);
   backdrop-filter: blur(10px);
+  will-change: transform;
+  transition: transform 280ms cubic-bezier(.22, .8, .3, 1), opacity 220ms ease;
 }
 .navbar-spacer { height: 74px; }
+.navbar-wrapper.navbar-hidden {
+  transform: translate3d(0, calc(-100% - 12px), 0) scaleY(.96);
+  opacity: .98;
+}
+.navbar-wrapper.navbar-revealing {
+  animation: navbarElasticReveal 560ms cubic-bezier(.2, .9, .25, 1) both;
+}
+@keyframes navbarElasticReveal {
+  0% { transform: translate3d(0, calc(-100% - 12px), 0) scaleY(.96); }
+  62% { transform: translate3d(0, 8px, 0) scaleY(1.02); }
+  82% { transform: translate3d(0, -3px, 0) scaleY(.995); }
+  100% { transform: translate3d(0, 0, 0) scaleY(1); }
+}
 
 .navbar {
   width: 100%;
@@ -735,6 +750,8 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .navbar-wrapper { animation: none !important; transition: none !important; }
+  .navbar-wrapper.navbar-hidden { transform: none; opacity: 1; }
   .hero-card,
   .tentang-left,
   .tentang-middle,

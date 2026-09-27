@@ -8,7 +8,7 @@ import { logoutSession } from '../../services/cloudflare';
 // - User session persistence dan security
 // - Conditional navigation berdasarkan user role
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";  // Router hooks untuk navigasi
 import "./Navbar.css";
 import logo from "../../assets/logo.png";  // Logo PERGUNU
@@ -26,6 +26,11 @@ const Navbar = () => {
   
   // State untuk menyimpan active section berdasarkan scroll position
   const [activeSection, setActiveSection] = useState('');
+  const [isNavbarHidden, setIsNavbarHidden] = useState(false);
+  const [isNavbarRevealing, setIsNavbarRevealing] = useState(false);
+  const lastScrollY = useRef(0);
+  const scrollFrame = useRef(null);
+  const revealTimer = useRef(null);
 
   // Effect untuk cek status login user saat component mount dan setiap render
   useEffect(() => {
@@ -64,6 +69,51 @@ const Navbar = () => {
     document.addEventListener('keydown', closeOnEscape);
     return () => document.removeEventListener('keydown', closeOnEscape);
   }, []);
+
+  // Hide on downward scrolling and reveal with a soft overshoot on upward scrolling.
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    lastScrollY.current = window.scrollY;
+    setIsNavbarHidden(false);
+    if (reduceMotion) return undefined;
+
+    const handleScroll = () => {
+      if (scrollFrame.current !== null) return;
+      scrollFrame.current = window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const scrollDelta = currentScrollY - lastScrollY.current;
+
+        if (!isMobileMenuOpen && Math.abs(scrollDelta) >= 4) {
+          if (scrollDelta > 0 && currentScrollY > 80) {
+            setIsNavbarHidden(true);
+            setIsNavbarRevealing(false);
+          } else if (scrollDelta < 0) {
+            setIsNavbarHidden(false);
+            setIsNavbarRevealing(true);
+            window.clearTimeout(revealTimer.current);
+            revealTimer.current = window.setTimeout(() => setIsNavbarRevealing(false), 560);
+          }
+        }
+
+        lastScrollY.current = currentScrollY;
+        scrollFrame.current = null;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollFrame.current !== null) window.cancelAnimationFrame(scrollFrame.current);
+      window.clearTimeout(revealTimer.current);
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsNavbarHidden(false);
+      setIsNavbarRevealing(false);
+    }
+  }, [isMobileMenuOpen]);
 
   // Effect untuk mendeteksi active section berdasarkan scroll position
   useEffect(() => {
@@ -126,7 +176,7 @@ const Navbar = () => {
   
   return (
     <>
-    <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}`}>
+    <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}${isNavbarHidden ? ' navbar-hidden' : ''}${isNavbarRevealing ? ' navbar-revealing' : ''}`}>
       <header className="navbar">
         <div className="navbar-left">
           <Link to="/">
