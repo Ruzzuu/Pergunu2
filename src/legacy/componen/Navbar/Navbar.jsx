@@ -26,10 +26,11 @@ const Navbar = () => {
   
   // State untuk menyimpan active section berdasarkan scroll position
   const [activeSection, setActiveSection] = useState('');
-  const [isNavbarPulsing, setIsNavbarPulsing] = useState(false);
+  const [navbarMotionDirection, setNavbarMotionDirection] = useState('down');
+  const [navbarMotionKey, setNavbarMotionKey] = useState(0);
   const lastScrollY = useRef(0);
   const scrollFrame = useRef(null);
-  const revealTimer = useRef(null);
+  const lastMotionAt = useRef(0);
 
   // Effect untuk cek status login user saat component mount dan setiap render
   useEffect(() => {
@@ -69,7 +70,7 @@ const Navbar = () => {
     return () => document.removeEventListener('keydown', closeOnEscape);
   }, []);
 
-  // Keep the navbar visible and give it a soft elastic pulse on any scroll movement.
+  // Let the navbar lag slightly in the scroll direction, then snap back to center.
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     lastScrollY.current = window.scrollY;
@@ -82,9 +83,12 @@ const Navbar = () => {
         const scrollDelta = currentScrollY - lastScrollY.current;
 
         if (!isMobileMenuOpen && Math.abs(scrollDelta) >= 4) {
-          setIsNavbarPulsing(true);
-          window.clearTimeout(revealTimer.current);
-          revealTimer.current = window.setTimeout(() => setIsNavbarPulsing(false), 560);
+          const now = window.performance.now();
+          if (now - lastMotionAt.current >= 140) {
+            lastMotionAt.current = now;
+            setNavbarMotionDirection(scrollDelta > 0 ? 'down' : 'up');
+            setNavbarMotionKey((key) => key + 1);
+          }
         }
 
         lastScrollY.current = currentScrollY;
@@ -96,13 +100,12 @@ const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (scrollFrame.current !== null) window.cancelAnimationFrame(scrollFrame.current);
-      window.clearTimeout(revealTimer.current);
     };
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      setIsNavbarPulsing(false);
+      setNavbarMotionKey((key) => key + 1);
     }
   }, [isMobileMenuOpen]);
 
@@ -167,7 +170,7 @@ const Navbar = () => {
   
   return (
     <>
-    <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}${isNavbarPulsing ? ' navbar-pulsing' : ''}`}>
+    <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}${navbarMotionKey ? ` navbar-motion-${navbarMotionDirection} navbar-motion-${navbarMotionKey % 2 ? 'a' : 'b'}` : ''}`}>
       <header className="navbar">
         <div className="navbar-left">
           <Link to="/">
