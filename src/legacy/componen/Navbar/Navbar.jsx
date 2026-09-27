@@ -26,8 +26,7 @@ const Navbar = () => {
   
   // State untuk menyimpan active section berdasarkan scroll position
   const [activeSection, setActiveSection] = useState('');
-  const [isNavbarHidden, setIsNavbarHidden] = useState(false);
-  const [isNavbarRevealing, setIsNavbarRevealing] = useState(false);
+  const [isNavbarPulsing, setIsNavbarPulsing] = useState(false);
   const lastScrollY = useRef(0);
   const scrollFrame = useRef(null);
   const revealTimer = useRef(null);
@@ -70,11 +69,10 @@ const Navbar = () => {
     return () => document.removeEventListener('keydown', closeOnEscape);
   }, []);
 
-  // Hide on downward scrolling and reveal with a soft overshoot on upward scrolling.
+  // Keep the navbar visible and give it a soft elastic pulse on any scroll movement.
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     lastScrollY.current = window.scrollY;
-    setIsNavbarHidden(false);
     if (reduceMotion) return undefined;
 
     const handleScroll = () => {
@@ -84,15 +82,9 @@ const Navbar = () => {
         const scrollDelta = currentScrollY - lastScrollY.current;
 
         if (!isMobileMenuOpen && Math.abs(scrollDelta) >= 4) {
-          if (scrollDelta > 0 && currentScrollY > 80) {
-            setIsNavbarHidden(true);
-            setIsNavbarRevealing(false);
-          } else if (scrollDelta < 0) {
-            setIsNavbarHidden(false);
-            setIsNavbarRevealing(true);
-            window.clearTimeout(revealTimer.current);
-            revealTimer.current = window.setTimeout(() => setIsNavbarRevealing(false), 560);
-          }
+          setIsNavbarPulsing(true);
+          window.clearTimeout(revealTimer.current);
+          revealTimer.current = window.setTimeout(() => setIsNavbarPulsing(false), 560);
         }
 
         lastScrollY.current = currentScrollY;
@@ -110,8 +102,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      setIsNavbarHidden(false);
-      setIsNavbarRevealing(false);
+      setIsNavbarPulsing(false);
     }
   }, [isMobileMenuOpen]);
 
@@ -176,7 +167,7 @@ const Navbar = () => {
   
   return (
     <>
-    <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}${isNavbarHidden ? ' navbar-hidden' : ''}${isNavbarRevealing ? ' navbar-revealing' : ''}`}>
+    <div className={`navbar-wrapper${isMobileMenuOpen ? ' menu-open' : ''}${isNavbarPulsing ? ' navbar-pulsing' : ''}`}>
       <header className="navbar">
         <div className="navbar-left">
           <Link to="/">

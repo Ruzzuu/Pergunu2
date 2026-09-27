@@ -67,17 +67,13 @@ a:hover { color: var(--green-dark); }
   transition: transform 280ms cubic-bezier(.22, .8, .3, 1), opacity 220ms ease;
 }
 .navbar-spacer { height: 74px; }
-.navbar-wrapper.navbar-hidden {
-  transform: translate3d(0, calc(-100% - 12px), 0) scaleY(.96);
-  opacity: .98;
+.navbar-wrapper.navbar-pulsing {
+  animation: navbarElasticPulse 560ms cubic-bezier(.2, .9, .25, 1) both;
 }
-.navbar-wrapper.navbar-revealing {
-  animation: navbarElasticReveal 560ms cubic-bezier(.2, .9, .25, 1) both;
-}
-@keyframes navbarElasticReveal {
-  0% { transform: translate3d(0, calc(-100% - 12px), 0) scaleY(.96); }
-  62% { transform: translate3d(0, 8px, 0) scaleY(1.02); }
-  82% { transform: translate3d(0, -3px, 0) scaleY(.995); }
+@keyframes navbarElasticPulse {
+  0% { transform: translate3d(0, 0, 0) scaleY(1); }
+  52% { transform: translate3d(0, 4px, 0) scaleY(1.025); }
+  78% { transform: translate3d(0, -2px, 0) scaleY(.995); }
   100% { transform: translate3d(0, 0, 0) scaleY(1); }
 }
 
@@ -751,7 +747,7 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
 
 @media (prefers-reduced-motion: reduce) {
   .navbar-wrapper { animation: none !important; transition: none !important; }
-  .navbar-wrapper.navbar-hidden { transform: none; opacity: 1; }
+  .navbar-wrapper.navbar-pulsing { transform: none; }
   .hero-card,
   .tentang-left,
   .tentang-middle,
