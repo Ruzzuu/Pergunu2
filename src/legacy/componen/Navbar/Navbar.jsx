@@ -84,7 +84,8 @@ const Navbar = () => {
 
         if (!isMobileMenuOpen && Math.abs(scrollDelta) >= 4) {
           const now = window.performance.now();
-          if (now - lastMotionAt.current >= 140) {
+          // Trigger one controlled motion per scroll gesture instead of reacting to every wheel tick.
+          if (now - lastMotionAt.current >= 520) {
             lastMotionAt.current = now;
             setNavbarMotionDirection(scrollDelta > 0 ? 'down' : 'up');
             setNavbarMotionKey((key) => key + 1);

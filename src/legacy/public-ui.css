@@ -68,39 +68,39 @@ a:hover { color: var(--green-dark); }
 }
 .navbar-spacer { height: 74px; }
 .navbar-wrapper.navbar-motion-down.navbar-motion-a {
-  animation: navbarElasticLagDownA 440ms cubic-bezier(.2, .9, .25, 1) both;
+  animation: navbarElasticLagDownA 520ms cubic-bezier(.22, .9, .3, 1) both;
 }
  .navbar-wrapper.navbar-motion-down.navbar-motion-b {
-  animation: navbarElasticLagDownB 440ms cubic-bezier(.2, .9, .25, 1) both;
+  animation: navbarElasticLagDownB 520ms cubic-bezier(.22, .9, .3, 1) both;
 }
 .navbar-wrapper.navbar-motion-up.navbar-motion-a {
-  animation: navbarElasticLagUpA 440ms cubic-bezier(.2, .9, .25, 1) both;
+  animation: navbarElasticLagUpA 520ms cubic-bezier(.22, .9, .3, 1) both;
 }
 .navbar-wrapper.navbar-motion-up.navbar-motion-b {
-  animation: navbarElasticLagUpB 440ms cubic-bezier(.2, .9, .25, 1) both;
+  animation: navbarElasticLagUpB 520ms cubic-bezier(.22, .9, .3, 1) both;
 }
 @keyframes navbarElasticLagDownA {
   0% { transform: translate3d(0, 0, 0) scaleY(1); }
-  38% { transform: translate3d(0, 5px, 0) scaleY(1.02); }
-  78% { transform: translate3d(0, -1px, 0) scaleY(.998); }
+  42% { transform: translate3d(0, -8px, 0) scaleY(.985); }
+  76% { transform: translate3d(0, 2px, 0) scaleY(1.006); }
   100% { transform: translate3d(0, 0, 0) scaleY(1); }
 }
 @keyframes navbarElasticLagDownB {
   0% { transform: translate3d(0, 0, 0) scaleY(1); }
-  38% { transform: translate3d(0, 5px, 0) scaleY(1.02); }
-  78% { transform: translate3d(0, -1px, 0) scaleY(.998); }
+  42% { transform: translate3d(0, -8px, 0) scaleY(.985); }
+  76% { transform: translate3d(0, 2px, 0) scaleY(1.006); }
   100% { transform: translate3d(0, 0, 0) scaleY(1); }
 }
 @keyframes navbarElasticLagUpA {
   0% { transform: translate3d(0, 0, 0) scaleY(1); }
-  38% { transform: translate3d(0, -5px, 0) scaleY(1.02); }
-  78% { transform: translate3d(0, 1px, 0) scaleY(.998); }
+  42% { transform: translate3d(0, 8px, 0) scaleY(1.015); }
+  76% { transform: translate3d(0, -2px, 0) scaleY(.994); }
   100% { transform: translate3d(0, 0, 0) scaleY(1); }
 }
 @keyframes navbarElasticLagUpB {
   0% { transform: translate3d(0, 0, 0) scaleY(1); }
-  38% { transform: translate3d(0, -5px, 0) scaleY(1.02); }
-  78% { transform: translate3d(0, 1px, 0) scaleY(.998); }
+  42% { transform: translate3d(0, 8px, 0) scaleY(1.015); }
+  76% { transform: translate3d(0, -2px, 0) scaleY(.994); }
   100% { transform: translate3d(0, 0, 0) scaleY(1); }
 }
 
