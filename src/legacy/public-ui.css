@@ -441,6 +441,15 @@ a:hover { color: var(--green-dark); }
   padding: clamp(72px, 9vw, 112px) 0;
   isolation: isolate;
 }
+.beasiswa-page-hero { color: #fff; }
+.beasiswa-page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(5, 20, 12, .38), rgba(5, 20, 12, .76));
+  pointer-events: none;
+}
 .page-hero-media { z-index: -2; }
 .page-hero::before,
 .sponsor-page-hero::before { z-index: -1; }
@@ -450,6 +459,12 @@ a:hover { color: var(--green-dark); }
 .sponsor-hero-content { max-width: 760px; }
 .page-title,
 .sponsor-page-title { margin: 0; font-size: clamp(2.7rem, 5vw, 4rem); line-height: 1.08; }
+.page-eyebrow { margin: 0 0 16px; color: #d9f2df; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.beasiswa-page-hero .hero-content { max-width: 760px; }
+.beasiswa-page-hero .page-subtitle { margin-top: 22px; }
+.beasiswa-hero-actions { justify-content: flex-start; margin-top: 32px; }
+.beasiswa-hero-actions .btn-primary,
+.beasiswa-hero-actions .btn-outline { min-width: 210px; }
 
 /* Image-led heroes for the standalone content pages. */
 .news-list-hero,

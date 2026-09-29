@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'; // Tambahkan useNavigate untuk n
 import Navbar from "../../componen/Navbar/Navbar";
 import Footer from "../../componen/Footer/Footer";
 import { formatRupiah } from "../../utils/formatCurrency";
+import beasiswaHeroImage from "../../assets/beritapage.jpeg";
 import './beasiswa_page.css';
 
 const Beasiswa = () => {
@@ -160,27 +161,33 @@ const Beasiswa = () => {
   return (
     <div>
       {/* Hero Section */}
-        <section className="hero">
-            <div className="container hero-content">
-            <div className="hero-text">
-            <div className="badge">Program Beasiswa</div>
-                <h1>Beasiswa untuk Guru Nahdliyin</h1>
-                <p>
-                Wujudkan impian pendidikan dengan berbagai program beasiswa yang tersedia
-                untuk anggota PERGUNU dan keluarga
-                </p>
+      <section className="page-hero beasiswa-page-hero">
+        <picture className="page-hero-media" aria-hidden="true">
+          <img
+            src={beasiswaHeroImage}
+            alt=""
+            width="1100"
+            height="619"
+            fetchPriority="high"
+          />
+        </picture>
+        <div className="container">
+          <div className="hero-content">
+            <p className="page-eyebrow">Program Beasiswa PERGUNU</p>
+            <h1 className="page-title">Beasiswa untuk Guru Nahdliyin</h1>
+            <p className="page-subtitle">
+              Wujudkan impian pendidikan dengan berbagai program beasiswa yang tersedia
+              untuk anggota PERGUNU dan keluarga.
+            </p>
+            <div className="hero-buttons beasiswa-hero-actions">
+              <a href="#scholarships" className="btn-primary">
+                Lihat Semua Beasiswa
+              </a>
+              <a href="#process" className="btn-outline">Panduan Pendaftaran</a>
             </div>
-            <div className="hero-image hero-image-frame">
-            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&auto=format&fit=crop" alt="Kegiatan pendidikan dan beasiswa" width="800" height="533" fetchPriority="high" />
-            </div>
-            <div className="hero-buttons">
-                <a href="#scholarships" className="btn-primary">
-          🎓    Lihat Semua Beasiswa
-                </a>
-                <a href="#process" className="btn-outline">Panduan Pendaftaran</a>
-            </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
       {/* Filter - Dynamic dari state */}
       <section className="filter-section">
