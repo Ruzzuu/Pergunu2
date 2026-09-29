@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'; // Tambahkan useNavigate untuk n
 import Navbar from "../../componen/Navbar/Navbar";
 import Footer from "../../componen/Footer/Footer";
 import { formatRupiah } from "../../utils/formatCurrency";
-import beasiswaHeroImage from "../../assets/beritapage.jpeg";
+import beasiswaHeroImage from "../../assets/beasiswapage.jpeg";
 import './beasiswa_page.css';
 
 const Beasiswa = () => {
@@ -167,7 +167,7 @@ const Beasiswa = () => {
             src={beasiswaHeroImage}
             alt=""
             width="1100"
-            height="619"
+            height="733"
             fetchPriority="high"
           />
         </picture>

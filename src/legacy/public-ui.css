@@ -447,7 +447,7 @@ a:hover { color: var(--green-dark); }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(5, 20, 12, .38), rgba(5, 20, 12, .76));
+  background: linear-gradient(180deg, rgba(5, 20, 12, .52), rgba(5, 20, 12, .82));
   pointer-events: none;
 }
 .page-hero-media { z-index: -2; }
