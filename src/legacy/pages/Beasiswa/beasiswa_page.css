@@ -88,7 +88,7 @@
   transition: 0.2s ease;
 }
 
-.btn-primary:hover {
+.beasiswa-page-hero .hero-buttons .btn-primary:hover {
   background: #0f7536;
   color: #fff;
   transform: translateY(-2px);
