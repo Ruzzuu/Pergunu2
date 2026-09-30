@@ -462,9 +462,9 @@ a:hover { color: var(--green-dark); }
 .page-eyebrow { margin: 0 0 16px; color: #d9f2df; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .beasiswa-page-hero .hero-content { max-width: 760px; }
 .beasiswa-page-hero .page-subtitle { margin-top: 22px; }
-.beasiswa-hero-actions { justify-content: flex-start; margin-top: 32px; }
+.beasiswa-hero-actions { justify-content: center; margin-top: 32px; }
 .beasiswa-hero-actions .btn-primary,
-.beasiswa-hero-actions .btn-outline { min-width: 210px; }
+.beasiswa-hero-actions .btn-outline { min-width: 210px; margin-right: 0; }
 
 /* Image-led heroes for the standalone content pages. */
 .news-list-hero,
