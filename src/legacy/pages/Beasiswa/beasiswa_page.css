@@ -89,8 +89,10 @@
 }
 
 .btn-primary:hover {
-  background: #e1e1e1;
-  color: #0f7536;
+  background: #0f7536;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 117, 54, 0.32);
 }
 
 .btn-outline {
