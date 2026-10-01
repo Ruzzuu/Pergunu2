@@ -23,6 +23,8 @@ const heroContents = [
 const Hero = () => {
   const ref = useRef(null); // Ref untuk element animasi scroll
   const [index, setIndex] = useState(0); // State untuk index konten yang aktif
+  const [isChanging, setIsChanging] = useState(false);
+  const transitionTimer = useRef(null);
 
   // Effect untuk animasi scroll - menambah class 'animate' saat visible
   useEffect(() => {
@@ -46,16 +48,34 @@ const Hero = () => {
     return () => window.removeEventListener("scroll", handleScroll); // Cleanup
   }, []);
 
+  const changeContent = (nextIndex) => {
+    window.clearTimeout(transitionTimer.current);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reducedMotion) {
+      setIndex(nextIndex);
+      return;
+    }
+
+    setIsChanging(true);
+    transitionTimer.current = window.setTimeout(() => {
+      setIndex(nextIndex);
+      setIsChanging(false);
+    }, 320);
+  };
+
+  useEffect(() => () => window.clearTimeout(transitionTimer.current), []);
+
   // Rotate the hero copy automatically while the homepage is mounted.
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
 
     const rotation = window.setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % heroContents.length);
+      changeContent((index + 1) % heroContents.length);
     }, 6000);
 
     return () => window.clearInterval(rotation);
-  }, []);
+  }, [index]);
 
   return (
     <section
@@ -73,10 +93,10 @@ const Hero = () => {
               <p className="hero-label">
                 PERGUNU (Persatuan Guru Nahdlatul Ulama)
               </p>
-              <h1 className="hero-title" key={`hero-title-${index}`}>
+              <h1 className={`hero-title ${isChanging ? "is-exiting" : "is-entering"}`} key={`hero-title-${index}`}>
                 {heroContents[index].title}
               </h1>
-              <p className="hero-desc" key={`hero-desc-${index}`}>
+              <p className={`hero-desc ${isChanging ? "is-exiting" : "is-entering"}`} key={`hero-desc-${index}`}>
                 {heroContents[index].desc}
               </p>
               <div className="hero-buttons">
