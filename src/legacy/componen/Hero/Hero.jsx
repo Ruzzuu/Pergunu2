@@ -73,8 +73,12 @@ const Hero = () => {
               <p className="hero-label">
                 PERGUNU (Persatuan Guru Nahdlatul Ulama)
               </p>
-              <h1 className="hero-title">{heroContents[index].title}</h1>
-              <p className="hero-desc">{heroContents[index].desc}</p>
+              <h1 className="hero-title" key={`hero-title-${index}`}>
+                {heroContents[index].title}
+              </h1>
+              <p className="hero-desc" key={`hero-desc-${index}`}>
+                {heroContents[index].desc}
+              </p>
               <div className="hero-buttons">
                 <a
                   href="/daftar"

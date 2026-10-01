@@ -93,6 +93,7 @@
   font-weight: 800;
   color: #1a1a1a;
   line-height: 1.5;
+  animation: heroTextReveal 700ms ease both;
 }
 
 .hero-desc {
@@ -101,6 +102,25 @@
   margin-bottom: 20px;
   font-weight: 400;
   max-width: 100%;
+  animation: heroTextReveal 700ms 120ms ease both;
+}
+
+@keyframes heroTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title,
+  .hero-desc {
+    animation: none;
+  }
 }
 
 .hero-button {
