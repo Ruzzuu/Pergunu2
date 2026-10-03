@@ -44,8 +44,10 @@ a:hover { color: var(--green-dark); }
 .quick-access-shell {
   width: min(calc(100% - 48px), var(--container));
   max-width: var(--container);
-  margin-inline: auto;
+  display: block;
+  margin: 0 auto;
   padding-inline: 0;
+  box-sizing: border-box;
 }
 
 /* Navigation */
