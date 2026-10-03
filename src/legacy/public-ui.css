@@ -494,6 +494,20 @@ a:hover { color: var(--green-dark); }
 .news-list-shell,
 .gallery-shell,
 .contact-hero .contact-shell { position: relative; z-index: 1; }
+.news-list-hero .news-list-shell,
+.gallery-hero .gallery-shell,
+.contact-hero .contact-shell {
+  text-align: center;
+}
+.news-list-hero h1,
+.news-list-hero span,
+.gallery-hero h1,
+.gallery-hero p:not(.gallery-eyebrow),
+.contact-hero h1,
+.contact-hero span {
+  margin-right: auto;
+  margin-left: auto;
+}
 .page-subtitle,
 .sponsor-page-subtitle { max-width: 58ch; margin: 22px auto 0; font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.7; }
 .hero-stats,
