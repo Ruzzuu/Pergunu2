@@ -176,35 +176,31 @@ const NewsDetail = () => {
       {/* Hero Section */}
       <section className="berita-hero">
         <div className="container">
-          <div className="breadcrumb">
-            <span onClick={() => navigate('/')} className="breadcrumb-link">Home</span>
-            <span className="breadcrumb-separator">→</span>
-            <span onClick={() => navigate('/berita')} className="breadcrumb-link">Berita</span>
-            <span className="breadcrumb-separator">→</span>
-            <span className="breadcrumb-current">{newsData.title}</span>
-          </div>
+          <nav className="berita-breadcrumb" aria-label="Breadcrumb">
+            <button type="button" onClick={() => navigate('/')} className="berita-breadcrumb-link">Beranda</button>
+            <span className="berita-breadcrumb-separator" aria-hidden="true">/</span>
+            <button type="button" onClick={() => navigate('/berita')} className="berita-breadcrumb-link">Berita</button>
+            <span className="berita-breadcrumb-separator" aria-hidden="true">/</span>
+            <span className="berita-breadcrumb-current" aria-current="page">{newsData.title}</span>
+          </nav>
           
           <div className="berita-hero-content">
             <div className="badge category">{newsData.category || 'Berita'}</div>
             <h1 className="berita-title">{newsData.title}</h1>
             
-            <div className="berita-meta">
-              <div className="meta-item">
-                <span>📅</span>
-                <span>{formatDate(newsData.publishDate || newsData.createdAt)}</span>
+            <div className="berita-meta" aria-label="Informasi berita">
+              <div className="berita-meta-item">
+                <span className="berita-meta-label">Diterbitkan</span>
+                <time dateTime={newsData.publishDate || newsData.createdAt}>{formatDate(newsData.publishDate || newsData.createdAt)}</time>
               </div>
-              <div className="meta-item">
-                <span>⏱️</span>
-                <span>5 min read</span>
-              </div>
-              <div className="meta-item">
-                <span>👤</span>
+              <div className="berita-meta-item">
+                <span className="berita-meta-label">Penulis</span>
                 <span>{newsData.author || 'Tim Redaksi PERGUNU'}</span>
               </div>
               {newsData.featured && (
-                <div className="meta-item">
-                  <span>⭐</span>
-                  <span>Berita Utama</span>
+                <div className="berita-meta-item berita-meta-featured">
+                  <span className="berita-meta-label">Pilihan redaksi</span>
+                  <span>Berita utama</span>
                 </div>
               )}
             </div>
