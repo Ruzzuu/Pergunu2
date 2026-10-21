@@ -81,6 +81,27 @@ a:hover { color: var(--green-dark); }
 .navbar-wrapper.navbar-motion-up.navbar-motion-b {
   animation: navbarElasticLagUpB 520ms cubic-bezier(.22, .9, .3, 1) both;
 }
+
+/* Shared entrance for page content when a public route opens. */
+.news-list-shell,
+.gallery-shell,
+.hero-content,
+.sponsor-hero-content,
+.contact-shell {
+  animation: publicContentEnter 1s ease forwards;
+}
+
+@keyframes publicContentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes navbarElasticLagDownA {
   0% { transform: translate3d(0, 0, 0) scaleY(1); }
   42% { transform: translate3d(0, -8px, 0) scaleY(.985); }
@@ -804,6 +825,14 @@ a.contact-card:hover { transform: translateY(-2px); border-color: var(--green-pr
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .news-list-shell,
+  .gallery-shell,
+  .hero-content,
+  .sponsor-hero-content,
+  .contact-shell {
+    animation: none !important;
+  }
+
   .navbar-wrapper { animation: none !important; transition: none !important; }
   .navbar-wrapper[class*="navbar-motion-"] { transform: none; animation: none !important; }
   .hero-card,
